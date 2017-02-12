@@ -10,13 +10,14 @@ import {Server} from './server';
     templateUrl: 'connection.component.html'
 })
 export class ConnectionComponent implements OnInit {
-    user:User;
-    server:Server;
+    user:User=new User();
+    server:Server=new Server();
     constructor(private connectionService:ConnectionService) { }
 
     ngOnInit() { }
 
     login():void{
+        console.log("Login Requested" + this.user.username + " " + this.server.serverName);
         let connectionResponse=this.connectionService.login(this.user,this.server);
         connectionResponse.subscribe(console.log);
 

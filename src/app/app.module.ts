@@ -1,3 +1,5 @@
+import { ConnectionComponent } from './connection.component';
+import { ConnectionService } from './connection.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -6,9 +8,11 @@ import {MaterialModule} from '@angular/material';
 
 import { AppComponent } from './app.component';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ConnectionComponent
   ],
   imports: [
     BrowserModule,
@@ -16,7 +20,7 @@ import { AppComponent } from './app.component';
     HttpModule,
     MaterialModule.forRoot(),
   ],
-  providers: [],
+  providers: [ConnectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
