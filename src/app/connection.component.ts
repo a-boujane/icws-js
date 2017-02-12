@@ -17,7 +17,9 @@ export class ConnectionComponent implements OnInit {
     ngOnInit() { }
 
     login():void{
-        this.connectionService.login(this.user,this.server);
+        let connectionResponse=this.connectionService.login(this.user,this.server);
+        connectionResponse.subscribe(console.log);
+
     }
 
 }
