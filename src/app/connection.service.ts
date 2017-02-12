@@ -1,4 +1,4 @@
-import { Observable } from '@angular-cli/ast-tools/node_modules/rxjs/Rx';
+import { ConnectionResponse } from './connection-response';
 import { ConnectionComponent } from './connection.component';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -19,7 +19,7 @@ export class ConnectionService {
 
     constructor(private http: Http) { }
 
-    login(user: User, server: Server): Observable<any> {
+    login(user: User, server: Server){
         let body = JSON.stringify({
             "__type": "urn:inin.com:connection:icAuthConnectionRequestSettings",
             "applicationName": "Icws-Js",
@@ -28,7 +28,7 @@ export class ConnectionService {
         });
         return this.http
             .post(this.getLoginUrl(server),body,this.options)
-            .map(resp=>resp.json());
+            .map(resp=>resp.json().data);
     }
 
     getLoginUrl(server: Server): string {
