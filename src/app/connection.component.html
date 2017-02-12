@@ -1,0 +1,10 @@
+<md-input-container>
+  <input md-input [(ngModel)]="server.serverName" placeholder="ServerName">
+</md-input-container>
+<md-input-container>
+  <input md-input [(ngModel)]="user.username" placeholder="UserID">
+</md-input-container>
+<md-input-container>
+  <input md-input [(ngModel)]="user.password" placeholder="Password">
+</md-input-container>
+<button md-raised-button (click)="login()">Login</button>
