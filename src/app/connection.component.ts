@@ -12,6 +12,7 @@ import { Server } from './server';
 export class ConnectionComponent implements OnInit {
     user: User = new User();
     server: Server = new Server();
+    pollingInterval=2;
     connectionData;
     constructor(private connectionService: ConnectionService) { }
 
@@ -21,14 +22,15 @@ export class ConnectionComponent implements OnInit {
         let connectionResponse = this.connectionService.login(this.user, this.server);
         connectionResponse.subscribe(
             resp => this.startMessaging(resp),
-            err => console.log(err),
-            () => console.log("yay method 3")
+            err => console.log(err)
         );
 
     }
 
     startMessaging(resp): void {
-        this.connectionService.startMessaging(resp);
+        console.log("StartMessaging");
+        console.log(resp)
+        this.connectionService.startMessaging(resp,this.pollingInterval);
     }
 
 }

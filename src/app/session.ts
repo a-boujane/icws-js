@@ -2,6 +2,7 @@ import { Headers, RequestOptions } from '@angular/http';
 import { User } from './user';
 
 export class Session {
+
     user: User;
     sessionId: string;
     csrfToken: string;
@@ -9,7 +10,8 @@ export class Session {
     headers = new Headers({
         "Accept-Language": "en-US"
     });
-    options = new RequestOptions({ headers: this.headers });
+    secureHeaders=this.headers;
+    options = new RequestOptions({ headers: this.headers , withCredentials: true});
 
     getOptions(): RequestOptions {
         return this.options;
@@ -19,7 +21,7 @@ export class Session {
         return this.baseUrl + "/" + this.sessionId + "/messaging/messages";
     }
     setBaseUrl(server): string {
-        this.baseUrl = "http://" + server + ":8018/icws";
+        this.baseUrl = "http://" + server.serverName + ":8018/icws";
         return this.baseUrl;
     }
 
@@ -34,9 +36,13 @@ export class Session {
     }
 
     initializeNewLogin(newHeaders) {
-        this.headers.append("csrfToken", newHeaders.get("csrfToken").toString());
-        this.headers.append("sessionId", newHeaders.get("sessionId").toString());
-        this.options = new RequestOptions({ headers: this.headers });
+        this.sessionId = newHeaders.sessionId.toString();
+        this.csrfToken = newHeaders.csrfToken.toString();
+        // this.secureHeaders.append("csrfToken", this.csrfToken);
+        this.headers.append("sessionId", this.sessionId);
+        // this.secureHeaders.append("sessionId", this.sessionId);
+
+        this.options = new RequestOptions({ headers: this.headers ,withCredentials: true},);
     }
 
 }

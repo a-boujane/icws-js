@@ -7,4 +7,7 @@
 <md-input-container>
   <input md-input [(ngModel)]="user.password" type="password" placeholder="Password">
 </md-input-container>
+<md-input-container>
+  <input md-input [(ngModel)]="pollingInterval" placeholder="Polling Interval (in seconds)">
+</md-input-container>
 <button md-raised-button (click)="login()">Login</button>
