@@ -10,47 +10,42 @@ import { Session } from './session';
 
 @Injectable()
 export class ConnectionService {
-    session: Session = new Session();
     constructor(private http: Http) { }
 
-    login(user: User, server: Server) {
-
-        let url = this.session.setBaseUrl(server);
-        let body = this.session.getLoginBody(user);
-        let options = this.session.getOptions();
+    login(session, user: User, server: Server) {
+        let url = session.setBaseUrl(server);
+        let body = session.getLoginBody(user);
+        let options = session.getOptions();
         return this.http
             .post(url + "/connection", body, options)
             .map(resp => resp.json());
     }
 
-
-    startMessaging(loginData,pollingInterval) {
-        console.log("started StartMessaging");
-        console.log("Here is some Login Data");
-        console.log(loginData);
-        this.session.initializeNewLogin(loginData);
-        setInterval(this.checkMessaging, 1000*pollingInterval,this);
+    startMessaging(session,loginData, pollingInterval) {
+        setInterval(this.checkMessaging, 1000 * pollingInterval, this,session);
     }
 
-    checkMessaging(self) {
-        console.log("Started Checking Messaging");
-        console.log(self.session);
-        let url = self.session.getMessagingUrl();
-        console.log("doesn't looklike we got SHIZ!");
-
-        let options = self.session.getOptions();
-        console.log(url);
-        console.log(options);
+    checkMessaging(self,session) {
+        let url = session.getMessagingUrl();
+        let options = session.getOptions();
         return self.http.get(url, options)
             .map(resp => resp.json())
             .subscribe(
-            resp => resp.json().data,
+            ()=>{},
             err => console.log(err.json())
             );
     }
 
+    customRequest(session, customMethod, customUrl, customRequest) {
+        return this.getContent(session, customUrl,customRequest)
+    }
 
+    getContent(session,customUrl, customRequest){
+        return this.http
+            .get(customUrl,session.options)
+            .map(resp=>resp);
 
+    }
 
 
 }

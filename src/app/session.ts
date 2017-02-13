@@ -10,8 +10,7 @@ export class Session {
     headers = new Headers({
         "Accept-Language": "en-US"
     });
-    secureHeaders=this.headers;
-    options = new RequestOptions({ headers: this.headers , withCredentials: true});
+    options = new RequestOptions({ headers: this.headers, withCredentials: true });
 
     getOptions(): RequestOptions {
         return this.options;
@@ -36,13 +35,14 @@ export class Session {
     }
 
     initializeNewLogin(newHeaders) {
+        console.log("Entering NewLoginInitialization");
+        console.log(this.headers);
+        console.log(this.options);
         this.sessionId = newHeaders.sessionId.toString();
         this.csrfToken = newHeaders.csrfToken.toString();
-        // this.secureHeaders.append("csrfToken", this.csrfToken);
         this.headers.append("sessionId", this.sessionId);
-        // this.secureHeaders.append("sessionId", this.sessionId);
-
-        this.options = new RequestOptions({ headers: this.headers ,withCredentials: true},);
+        this.headers.append("ININ-ICWS-CSRF-Token", this.csrfToken);
+        this.options = new RequestOptions({ headers: this.headers, withCredentials: true }, );
     }
 
 }
