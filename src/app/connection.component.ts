@@ -28,8 +28,13 @@ export class ConnectionComponent {
     }`;
     customMethod: string = "";
 
-    customResponseBody = {"send":"a request"};
-    customRespomseBodyString=JSON.stringify(this.customResponseBody);
+    customResponseBody = {
+        "orderNumber": 1,
+        "customerId": "-513165213",
+        "shoppingCartId": 123654789651,
+        "firstName": "UserName"
+    };
+    customRespomseBodyString=JSON.stringify(this.customResponseBody,undefined,4);
     customResponseHeaders = "";
 
     constructor(private connectionService: ConnectionService) { }

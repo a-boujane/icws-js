@@ -1,0 +1,22 @@
+.card-400 {
+  width: 380px;
+  max-height: 380;
+}
+
+.root{
+    margin-top: 30px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
+    font-family: 'Pacifico', cursive;
+}
+
+.json{
+    font-family: 'Inconsolata', monospace;
+}
+
+.fatButton {
+    height: 60px;
+    width: 120px;
+    font-size: 24px;
+    }

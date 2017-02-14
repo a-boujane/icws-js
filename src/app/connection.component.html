@@ -1,37 +1,56 @@
-<md-input-container>
-  <input size="40" autofocus md-input [(ngModel)]="server.serverName" placeholder="ServerName" [disabled]="!loggedOut">
-</md-input-container>
-<br>
-<md-input-container>
-  <input md-input [(ngModel)]="user.username" placeholder="UserID" [disabled]="!loggedOut">
-</md-input-container>
-<md-input-container>
-  <input md-input [(ngModel)]="user.password" type="password" placeholder="Password" [disabled]="!loggedOut">
-</md-input-container>
-<br>
-<md-input-container>
-  <input md-input [(ngModel)]="pollingInterval" placeholder="Polling Interval (in seconds)" [disabled]="!loggedOut">
-</md-input-container>
-<button md-raised-button (click)="login()" *ngIf="loggedOut">Login</button>
-
-<br>
-<br>
-<md-toolbar>
-  <span *ngIf="loggedOut" >Login first to make custom requests </span>
-  <span *ngIf="!loggedOut"> You are now logged in! Feel free to make custom requests below</span>
-</md-toolbar>
-<div *ngIf="!loggedOut">
-  <br>
+<div class="root">
   <md-input-container>
-    <input md-input [(ngModel)]="customUrl" placeholder="Request URL" [disabled]="loggedOut" size="80">
+    <input size="40" autofocus md-input [(ngModel)]="server.serverName" placeholder="ServerName" [disabled]="!loggedOut">
   </md-input-container>
   <br>
-  <textarea rows="30" cols="50" [disabled]="loggedOut" [(ngModel)]="customBody" placeholder="Request goes">
-</textarea>
-  <textarea rows="30" cols="50" [disabled]="loggedOut"  placeholder="">
-    {{customRespomseBodyString}}
-</textarea>
+  <md-input-container>
+    <input md-input [(ngModel)]="user.username" placeholder="UserID" [disabled]="!loggedOut">
+  </md-input-container>
+  <md-input-container>
+    <input md-input [(ngModel)]="user.password" type="password" placeholder="Password" [disabled]="!loggedOut">
+  </md-input-container>
+  <br>
+  <md-input-container>
+    <input md-input [(ngModel)]="pollingInterval" placeholder="Polling Interval (in seconds)" [disabled]="!loggedOut">
+  </md-input-container>
+  <button md-raised-button (click)="login()" *ngIf="loggedOut">Login</button>
+
   <br>
   <br>
-  <button md-raised-button (click)="sendCustomRequest()">Send!</button>
+
+
+
+  <md-toolbar>
+    <span *ngIf="loggedOut">Login first to make custom requests </span>
+    <span *ngIf="!loggedOut"> You are now logged in! Feel free to make custom requests below</span>
+  </md-toolbar>
+  <div *ngIf="loggedOut">
+    <br>
+    <md-input-container>
+      <input md-input [(ngModel)]="customUrl" url placeholder="Request URL" [disabled]="!loggedOut" size="80">
+    </md-input-container>
+    <br>
+
+
+
+
+    <md-grid-list cols="7" rowHeight="500px">
+      <md-grid-tile colspan="3">
+        <md-input-container>
+          <textarea class="json" md-input rows="24" cols="60" [disabled]="!loggedOut" [(ngModel)]="customBody" placeholder="Request"></textarea>
+        </md-input-container>
+      </md-grid-tile>
+      <md-grid-tile colspan="1">
+        <button class="fatButton" md-raised-button (click)="sendCustomRequest()">Send!</button>
+      </md-grid-tile>
+      <md-grid-tile colspan="3">
+        <md-input-container>
+          <textarea class="json" disabled md-input rows="24" cols="60">{{customRespomseBodyString}}</textarea>
+        </md-input-container>
+        </md-grid-tile>
+    </md-grid-list>
+
+
+  </div>
+
 </div>
