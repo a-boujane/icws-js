@@ -9,6 +9,8 @@
     margin-right: 25px;
     margin-left: 25px;
     font-family: 'Pacifico', cursive;
+    color: #164d59;
+    background-color: #f6f8f8
 }
 
 .json{
@@ -20,3 +22,7 @@
     width: 120px;
     font-size: 24px;
     }
+
+textarea {
+    resize: none;
+}

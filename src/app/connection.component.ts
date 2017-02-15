@@ -60,8 +60,8 @@ export class ConnectionComponent {
         this.connectionService
             .customRequest(this.session, this.customMethod, this.customUrl, this.customBody)
             .subscribe(
-                resp => this.customRespomseBodyString = JSON.stringify(resp.json()),
-                resp => this.customRespomseBodyString = JSON.stringify(resp.json())
+                resp => this.customRespomseBodyString = JSON.stringify(resp.json(),undefined,4),
+                resp => this.customRespomseBodyString = JSON.stringify(resp.json(),undefined,4)
                 );
     }
 
