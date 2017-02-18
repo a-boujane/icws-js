@@ -1,4 +1,3 @@
-import { Observer } from '@angular-cli/ast-tools/node_modules/rxjs/Rx';
 import { ConnectionComponent } from './connection.component';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
