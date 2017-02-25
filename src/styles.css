@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes|Pacifico');
+
 
 html, body, {
     position:fixed;
