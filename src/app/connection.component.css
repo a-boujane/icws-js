@@ -12,6 +12,27 @@
     color: #164d59
 }
 
+.login-card {
+  width: 500px;
+}
+
+.login-card-header{
+    font-family: 'Great Vibes', cursive;
+    font-size: 28px;
+    text-align: center;
+}
+
+.padded{
+    margin: 20px;
+}
+
+.login-button{
+    left: 50%;
+    margin: 20px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
 .json{
     font-family: 'Inconsolata', monospace;
 }

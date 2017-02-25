@@ -1,59 +1,78 @@
-<md-sidenav >
-<div class="root">
-  <md-input-container>
-    <input autocomplete="on" size="40" autofocus mdInput [(ngModel)]="server.serverName" placeholder="ServerName">
-  </md-input-container>
-  <br>
-  <md-input-container>
-    <input autocomplete="on" mdInput [(ngModel)]="user.username" placeholder="UserID">
-  </md-input-container>
-  <md-input-container>
-    <input autocomplete="on" mdInput [(ngModel)]="user.password" type="password" placeholder="Password">
-  </md-input-container>
-  <br>
-  <md-input-container>
-    <input mdInput [(ngModel)]="pollingInterval" placeholder="Polling Interval (in seconds)">
-  </md-input-container>
-  <button md-raised-button (click)="login()" *ngIf="loggedOut">Login</button>
-
-  <br>
-  <br>
-
-
-
-  <md-toolbar>
-    <span *ngIf="loggedOut">Login first to make custom requests </span>
-    <span *ngIf="!loggedOut"> You are now logged in! Feel free to make custom requests below</span>
-  </md-toolbar>
-  <div >
-    <br>
-    <md-input-container>
-      <input mdInput [(ngModel)]="customUrl" url placeholder="Request URL" size="80">
-    </md-input-container>
-    <br>
-
-
-
-
+<md-sidenav>
+  <div class="root">
     <md-grid-list cols=11 rowHeight="500px">
-      <md-grid-tile colspan="5">
-        <md-input-container>
-          <textarea class="json" mdInput rows="24" cols="60" [(ngModel)]="customBody" placeholder="Request"></textarea>
-        </md-input-container>
-      </md-grid-tile>
       <md-grid-tile colspan="1">
-        <button class="fatButton" md-raised-button (click)="sendCustomRequest()">Send!</button>
       </md-grid-tile>
-      <md-grid-tile colspan="5">
-        <md-input-container>
-          <textarea class="json" disabled mdInput rows="24" cols="60">{{customRespomseBodyString}}</textarea>
-        </md-input-container>
-        </md-grid-tile>
+      <md-grid-tile colspan="9">
+        <md-card class="login-card">
+          <md-card-header class="padded">
+            <md-card-title class="login-card-header">
+              <span class="login-card-header">IcwsJs Login Screen</span>
+            </md-card-title>
+            <md-card-subtitle>Please enter your Server Name, User Name and Password</md-card-subtitle>
+          </md-card-header>
+          <br>
+          <md-card-content>
+            <md-input-container>
+              <input autocomplete="on" size="60" autofocus mdInput [(ngModel)]="server.serverName" placeholder="Server Name">
+            </md-input-container>
+            <br><br>
+            <md-input-container>
+              <input autocomplete="on" size="30" mdInput [(ngModel)]="user.username" placeholder="User Name">
+            </md-input-container>
+            <md-input-container>
+              <input autocomplete="on" size="30" mdInput [(ngModel)]="user.password" type="password" placeholder="Password">
+            </md-input-container>
+            <br>
+            <!--<md-input-container>
+              <input mdInput [(ngModel)]="pollingInterval" placeholder="Polling Interval (in seconds)">
+            </md-input-container>-->
+
+          </md-card-content>
+          <md-card-actions>
+            <button class = "login-button" md-raised-button (click)="login()" *ngIf="loggedOut">LOGIN</button>
+          </md-card-actions>
+        </md-card>
+      </md-grid-tile>
     </md-grid-list>
 
+    <br>
 
+
+<!--
+    <md-toolbar>
+      <span *ngIf="loggedOut">Login first to make custom requests </span>
+      <span *ngIf="!loggedOut"> You are now logged in! Feel free to make custom requests below</span>
+    </md-toolbar>
+    <div>
+      <br>
+      <md-input-container>
+        <input mdInput [(ngModel)]="customUrl" url placeholder="Request URL" size="80">
+      </md-input-container>
+      <br>
+
+
+
+
+      <md-grid-list cols=11 rowHeight="500px">
+        <md-grid-tile colspan="5">
+          <md-input-container>
+            <textarea class="json" mdInput rows="24" cols="60" [(ngModel)]="customBody" placeholder="Request"></textarea>
+          </md-input-container>
+        </md-grid-tile>
+        <md-grid-tile colspan="1">
+          <button class="fatButton" md-raised-button (click)="sendCustomRequest()">Send!</button>
+        </md-grid-tile>
+        <md-grid-tile colspan="5">
+          <md-input-container>
+            <textarea class="json" disabled mdInput rows="24" cols="60">{{customRespomseBodyString}}</textarea>
+          </md-input-container>
+        </md-grid-tile>
+      </md-grid-list>
+
+
+    </div>
+-->
   </div>
-
-</div>
 
 </md-sidenav>

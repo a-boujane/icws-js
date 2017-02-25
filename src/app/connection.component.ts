@@ -15,11 +15,8 @@ export class ConnectionComponent {
     user: User = new User();
     server: Server = new Server();
     session: Session = new Session();
-
     pollingInterval = 2;
-
     loggedOut = true;
-
     customUrl: string = "";
     customBody = `
     {
@@ -27,13 +24,7 @@ export class ConnectionComponent {
         "item2": "value2"
     }`;
     customMethod: string = "";
-
-    customResponseBody = {
-        "orderNumber": 1,
-        "customerId": "-513165213",
-        "shoppingCartId": 123654789651,
-        "firstName": "UserName"
-    };
+    customResponseBody;
     customRespomseBodyString=JSON.stringify(this.customResponseBody,undefined,4);
     customResponseHeaders = "";
 
