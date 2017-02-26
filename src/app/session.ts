@@ -7,6 +7,7 @@ export class Session {
     sessionId: string;
     csrfToken: string;
     baseUrl: string;
+    loggedOn:boolean=false;
     headers = new Headers({
         "Accept-Language": "en-US"
     });
@@ -43,6 +44,7 @@ export class Session {
         this.headers.append("sessionId", this.sessionId);
         this.headers.append("ININ-ICWS-CSRF-Token", this.csrfToken);
         this.options = new RequestOptions({ headers: this.headers, withCredentials: true }, );
+        this.loggedOn=true;
     }
 
 }
