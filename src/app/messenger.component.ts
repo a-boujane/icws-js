@@ -1,14 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {MessengerService} from './messenger.service';
-import { Session } from './session';
+import { Session } from './class/session';
 
 @Component({
     moduleId: module.id,
     selector: 'messenger',
-    templateUrl: './messenger.component.html',
-    styleUrls: ['./messenger.component.css']
+    templateUrl: './html/messenger.component.html',
+    styleUrls: ['./css/messenger.component.css']
 })
-export class Messenger implements OnInit {
+export class Messenger {
     @Input()
     session: Session;
     customUrl: string = "";
@@ -24,16 +24,12 @@ export class Messenger implements OnInit {
 
     constructor(private messengerService:MessengerService) { }
 
-    ngOnInit() {
-        this.customUrl = this.session.baseUrl + "/" + this.session.sessionId + "/activations/users/abeb_admin";
-
-    }
     sendCustomRequest() {
         console.log("Called Custom Request");
         console.log(this.session);
         console.log(this.customResponseBody);
         this.messengerService
-            .customRequest(this.session, this.customMethod, this.customUrl, this.customBody)
+            .customRequest(this.session, this.customMethod, this.session.sampleUrl, this.customBody)
             .subscribe(
             resp => this.customRespomseBodyString = JSON.stringify(resp.json(), undefined, 4),
             resp => this.customRespomseBodyString = JSON.stringify(resp.json(), undefined, 4)

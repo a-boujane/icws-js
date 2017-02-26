@@ -2,9 +2,9 @@ import { ConnectionComponent } from './connection.component';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 
-import { User } from './user';
-import { Server } from './server';
-import { Session } from './session';
+import { User } from './class/user';
+import { Server } from './class/server';
+import { Session } from './class/session';
 
 @Injectable()
 export class ConnectionService {

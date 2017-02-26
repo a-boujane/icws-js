@@ -12,6 +12,7 @@ export class Session {
         "Accept-Language": "en-US"
     });
     options = new RequestOptions({ headers: this.headers, withCredentials: true });
+    sampleUrl:string="";
 
     getOptions(): RequestOptions {
         return this.options;
@@ -48,6 +49,7 @@ export class Session {
         this.loggedOn = true;
         console.log("created new session id: "+this.sessionId);
         console.log(this.options);
+        this.sampleUrl=this.baseUrl + "/" + this.sessionId + "/activations/users/"+this.user.username;
 
     }
 

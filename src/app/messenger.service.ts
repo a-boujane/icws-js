@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
-import { Session } from './session';
+import { Session } from './class/session';
 
 @Injectable()
 export class MessengerService {
