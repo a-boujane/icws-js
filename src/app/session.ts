@@ -7,7 +7,7 @@ export class Session {
     sessionId: string;
     csrfToken: string;
     baseUrl: string;
-    loggedOn:boolean=false;
+    loggedOn: boolean = false;
     headers = new Headers({
         "Accept-Language": "en-US"
     });
@@ -27,6 +27,7 @@ export class Session {
 
     getLoginBody(user: User) {
         this.user = user;
+        console.log("trying to log user"+user.username);
         return JSON.stringify({
             "__type": "urn:inin.com:connection:icAuthConnectionRequestSettings",
             "applicationName": "Icws-Js",
@@ -44,7 +45,9 @@ export class Session {
         this.headers.append("sessionId", this.sessionId);
         this.headers.append("ININ-ICWS-CSRF-Token", this.csrfToken);
         this.options = new RequestOptions({ headers: this.headers, withCredentials: true }, );
-        this.loggedOn=true;
+        this.loggedOn = true;
+        console.log("created new session id: "+this.sessionId);
+        console.log(this.options);
     }
 
 }

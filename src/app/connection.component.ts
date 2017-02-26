@@ -1,5 +1,5 @@
 import { Session } from './session';
-import { Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { ConnectionService } from './connection.service';
 import { User } from './user';
@@ -16,18 +16,7 @@ export class ConnectionComponent {
     server: Server = new Server();
     @Input()
     session: Session;
-    pollingInterval = 2;
-    loggedOut = true;
-    customUrl: string = "";
-    customBody = `
-    {
-        "item1": "value1",
-        "item2": "value2"
-    }`;
-    customMethod: string = "";
-    customResponseBody;
-    customRespomseBodyString=JSON.stringify(this.customResponseBody,undefined,4);
-    customResponseHeaders = "";
+
 
     constructor(private connectionService: ConnectionService) { }
 
@@ -41,20 +30,9 @@ export class ConnectionComponent {
 
     startMessaging(resp): void {
         this.session.initializeNewLogin(resp);
-        this.customUrl = this.session.baseUrl + "/"+this.session.sessionId+"/activations/users/"+this.user.username;
-        this.loggedOut = false;
-        this.connectionService.startMessaging(this.session, resp, this.pollingInterval);
+        this.connectionService.startMessaging(this.session, resp, 2);
     }
 
-    sendCustomRequest() {
-        console.log("Called Custom Request");
-        console.log(this.customResponseBody);
-        this.connectionService
-            .customRequest(this.session, this.customMethod, this.customUrl, this.customBody)
-            .subscribe(
-                resp => this.customRespomseBodyString = JSON.stringify(resp.json(),undefined,4),
-                resp => this.customRespomseBodyString = JSON.stringify(resp.json(),undefined,4)
-                );
-    }
+    
 
 }

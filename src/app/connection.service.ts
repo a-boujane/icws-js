@@ -20,6 +20,8 @@ export class ConnectionService {
     }
 
     startMessaging(session,loginData, pollingInterval) {
+        console.log("this is inside startMessaging - connection.service");
+        console.log(this.http);
         setInterval(this.checkMessaging, 1000 * pollingInterval, this,session);
     }
 
@@ -33,17 +35,4 @@ export class ConnectionService {
             err => console.log(err.json())
             );
     }
-
-    customRequest(session, customMethod, customUrl, customRequest) {
-        return this.getContent(session, customUrl,customRequest)
-    }
-
-    getContent(session,customUrl, customRequest){
-        return this.http
-            .get(customUrl,session.options)
-            .map(resp=>resp);
-
-    }
-
-
 }

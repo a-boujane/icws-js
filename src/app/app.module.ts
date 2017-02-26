@@ -1,5 +1,6 @@
 import { ConnectionComponent } from './connection.component';
 import { ConnectionService } from './connection.service';
+import {MessengerService} from './messenger.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -22,7 +23,7 @@ import {Messenger} from './messenger.component';
     HttpModule,
     MaterialModule.forRoot(),
   ],
-  providers: [ConnectionService],
+  providers: [ConnectionService,MessengerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
