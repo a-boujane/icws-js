@@ -1,6 +1,7 @@
 import { Session } from './session';
 import { Component, Input } from '@angular/core';
 
+
 import { ConnectionService } from './connection.service';
 import { User } from './user';
 import { Server } from './server';
@@ -32,7 +33,5 @@ export class ConnectionComponent {
         this.session.initializeNewLogin(resp);
         this.connectionService.startMessaging(this.session, resp, 2);
     }
-
-    
 
 }

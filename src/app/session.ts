@@ -7,7 +7,7 @@ export class Session {
     sessionId: string;
     csrfToken: string;
     baseUrl: string;
-    loggedOn: boolean = false;
+    loggedOn:boolean=false;
     headers = new Headers({
         "Accept-Language": "en-US"
     });
@@ -48,6 +48,7 @@ export class Session {
         this.loggedOn = true;
         console.log("created new session id: "+this.sessionId);
         console.log(this.options);
+
     }
 
 }

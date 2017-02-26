@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {MessengerService} from './messenger.service';
 import { Session } from './session';
+
 @Component({
     moduleId: module.id,
     selector: 'messenger',
