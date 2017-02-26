@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-
+import {Session} from './session';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  loggedOn:boolean=false;
+  session:Session=new Session();;
 }

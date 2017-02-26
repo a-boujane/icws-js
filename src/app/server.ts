@@ -1,3 +1,3 @@
 export class Server{
-    serverName:string="";
+    serverName:string="boujane01.supportlab.inin.com";
 }

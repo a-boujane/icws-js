@@ -1,5 +1,5 @@
 import { Session } from './session';
-import { Component } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 import { ConnectionService } from './connection.service';
 import { User } from './user';
@@ -14,7 +14,8 @@ import { Server } from './server';
 export class ConnectionComponent {
     user: User = new User();
     server: Server = new Server();
-    session: Session = new Session();
+    @Input()
+    session: Session;
     pollingInterval = 2;
     loggedOut = true;
     customUrl: string = "";

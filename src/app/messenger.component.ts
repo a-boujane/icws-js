@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
+import{Session} from './session';
 @Component({
     moduleId: module.id,
     selector: 'messenger',
-    templateUrl: 'feature.component.html'
+    templateUrl: './messenger.component.html',
+    styleUrls: ['./messenger.component.css']
 })
-export class FeatureComponent implements OnInit {
+export class Messenger implements OnInit {
+    @Input()
+    session:Session;
+
     constructor() { }
 
     ngOnInit() { }
