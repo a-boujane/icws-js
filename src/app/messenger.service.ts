@@ -6,34 +6,24 @@ import { Session } from './class/session';
 export class MessengerService {
     constructor(private http:Http) { }
 
-    customRequest(session, method, url, extraHeaders,body) {
-        // body=JSON.parse(body);
+    generalRequest(session:Session, method:string, url:string, extraHeaders:string,body:string) {
+        method=method.toLowerCase();
         let headers=new Headers(session.headers);
-        return this.getContent(session, url,body)
+        let tempHeaders=extraHeaders.split(",");
+        tempHeaders.map(header=>{
+            let intermediate=header.split(":");
+            if(intermediate.length>1)
+                headers.append(intermediate[0],intermediate[1]);
+            return;
+        });
+        let options=new RequestOptions({ method:method,headers: headers,body:body, url:url,withCredentials: true }, );
+        debugger;
+        return this.call(url,options)
     }
 
-    getContent(session,customUrl, customRequest){
-        return this.http
-            .get(customUrl,session.options)
+    
+    call(url:string, options:RequestOptions){
+        return this.http.request(url,options)
             .map(resp=>resp);
     }
-
-    postRequest(session,customUrl,customRequest){
-        return this.http
-            .post(customUrl,customRequest,session.options)
-            .map(resp=>resp);
-    }
-
-    putRequest(session,customUrl,customRequest){
-        return this.http
-            .put(customUrl,customRequest,session.options)
-            .map(resp=>resp);
-    }
-
-    deleteRequest(session,customUrl,customRequest){
-        return this.http
-            .delete(customUrl,session.options)
-            .map(resp=>resp);
-    }
-
 }

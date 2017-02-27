@@ -31,7 +31,7 @@ export class Session {
 
     getLoginBody(user: User) {
         this.user = user;
-        console.log("trying to log user"+user.username);
+        console.log("Attempt to login from "+user.username);
         return JSON.stringify({
             "__type": "urn:inin.com:connection:icAuthConnectionRequestSettings",
             "applicationName": "Icws-Js",

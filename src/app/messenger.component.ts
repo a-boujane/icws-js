@@ -29,7 +29,7 @@ export class Messenger {
 
     sendRequest() {
         this.messengerService
-            .customRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.headers, this.body)
+            .generalRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.headers, this.body)
             .subscribe(
             resp=>{
                 this.responseCode=resp.status;
@@ -46,9 +46,4 @@ export class Messenger {
             );
     }
 
-    setResponse(resp){
-        this.responseCode=resp.status;
-        this.responseHeaders=resp.headers;
-        this.responseBody = JSON.stringify(resp.json(), undefined, 4)
-    }
 }
