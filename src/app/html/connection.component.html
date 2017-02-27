@@ -14,20 +14,19 @@
           <br>
           <md-card-content>
             <md-input-container>
-              <input autocomplete="on" size="60" autofocus mdInput [(ngModel)]="server.serverName" placeholder="Server Name">
+              <input autocomplete="on" size="60" class="raleway" autofocus mdInput [(ngModel)]="server.serverName" placeholder="Server Name">
             </md-input-container>
             <br><br>
             <md-input-container>
-              <input autocomplete="on" size="28" mdInput [(ngModel)]="user.username" placeholder="User Name">
+              <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.username" placeholder="User Name">
             </md-input-container>
             <md-input-container>
-              <input autocomplete="on" size="28" mdInput [(ngModel)]="user.password" type="password" placeholder="Password">
+              <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.password" type="password" placeholder="Password">
             </md-input-container>
             <br>
           </md-card-content>
           <md-card-actions>
-            <button class="login-button" md-button (click)="login()" >LOGIN</button>
-
+            <button class="centrino"  color="primary" md-button (click)="login()">LOGIN</button>
           </md-card-actions>
         </md-card>
       </md-grid-tile>

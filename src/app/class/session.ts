@@ -1,9 +1,11 @@
 import { Headers, RequestOptions } from '@angular/http';
 import { User } from './user';
+import {Server} from './server';
 
 export class Session {
 
     user: User;
+    server:Server;
     sessionId: string;
     csrfToken: string;
     baseUrl: string;
@@ -22,6 +24,7 @@ export class Session {
         return this.baseUrl + "/" + this.sessionId + "/messaging/messages";
     }
     setBaseUrl(server): string {
+        this.server=server;
         this.baseUrl = "http://" + server.serverName + ":8018/icws";
         return this.baseUrl;
     }

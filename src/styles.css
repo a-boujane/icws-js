@@ -1,12 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/core/theming/prebuilt/indigo-pink.css';
-@import url('https://fonts.googleapis.com/css?family=Great+Vibes|Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes|Pacifico|Raleway');
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
+@import './app/css/extra.css';
 
 
-html, body, {
+/*html, body, {
     position:fixed;
     top:0;
     bottom:0;
     left:0;
     right:0;
-}
+
+}*/

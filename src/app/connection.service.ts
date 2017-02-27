@@ -20,8 +20,6 @@ export class ConnectionService {
     }
 
     startMessaging(session,loginData, pollingInterval) {
-        console.log("this is inside startMessaging - connection.service");
-        console.log(this.http);
         setInterval(this.checkMessaging, 1000 * pollingInterval, this,session);
     }
 

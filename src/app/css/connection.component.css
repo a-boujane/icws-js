@@ -11,9 +11,12 @@
     font-family: 'Pacifico', cursive;
     color: #164d59
 }
+.raleway{
+    font-family: 'Raleway', sans-serif;
+}
 
 .login-card {
-  width: 500px;
+  width: auto;
 }
 
 .login-card-header{
@@ -26,14 +29,12 @@
     margin: 20px;
 }
 
-.login-button{
+.centrino{
     left: 50%;
-    margin: 20px;
+    margin-top: 20px;
+    font-family: 'Raleway', sans-serif;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 
-.json{
-    font-family: 'Inconsolata', monospace;
-}
 

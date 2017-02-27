@@ -1,22 +1,43 @@
 <div *ngIf="session.loggedOn">
-    <br>
-    <md-input-container>
-        <input mdInput [(ngModel)]="session.sampleUrl" url placeholder="Request URL" size="100">
-    </md-input-container>
-    <br>
-    <md-grid-list cols=11 rowHeight="500px">
-        <md-grid-tile colspan="5">
-            <md-input-container>
-                <textarea class="json" mdInput rows="24" cols="60" [(ngModel)]="customBody" placeholder="Request"></textarea>
+    <md-card class="messenger-card">
+        <md-card-content>
+            <md-chip-list>
+                <label class="raleway">Select the HTTP Method :</label>
+                <md-chip *ngFor="let method of methods" [selected]="method===selectedMethod" (click)="onSelect(method)" class="minyPad raleway">
+                    {{method}}</md-chip>
+            </md-chip-list>
+            <md-input-container class="pad">
+                <input mdInput [(ngModel)]="session.sampleUrl" url class="raleway" placeholder="Request URL" size="100">
             </md-input-container>
-        </md-grid-tile>
-        <md-grid-tile colspan="1">
-            <button class="fatButton" md-raised-button (click)="sendCustomRequest()">Send!</button>
-        </md-grid-tile>
-        <md-grid-tile colspan="5">
-            <md-input-container>
-                <textarea class="json" disabled mdInput rows="24" cols="60">{{customRespomseBodyString}}</textarea>
-            </md-input-container>
-        </md-grid-tile>
-    </md-grid-list>
+            <md-grid-list cols=11 rowHeight="100px">
+                <md-grid-tile colspan="5" rowspan="2">
+                    <md-input-container>
+                        <textarea class="json tiny" mdInput disabled cols="60" [(ngModel)]="headers" placeholder="Request Headers (in json format)"></textarea>
+                    </md-input-container>
+                </md-grid-tile>
+                <md-grid-tile colspan="1" rowspan="5">
+                    <button md-raised-button (click)="sendRequest()">Send!</button>
+                </md-grid-tile>
+                <md-grid-tile colspan="5" rowspan="2">
+                    <md-input-container>
+                        <textarea class="json tiny" disabled mdInput cols="60" placeholder="Response">{{responseHeaders}}</textarea>
+                        <md-hint *ngIf="responseCode" align="end">Response Code : {{responseCode}}</md-hint>
+                    </md-input-container>
+                </md-grid-tile>
+                <md-grid-tile colspan="5" rowspan="3">
+                    <md-input-container>
+                        <textarea class="json request" mdInput disabled cols="60" [(ngModel)]="body" placeholder="Request Body"></textarea>
+                    </md-input-container>
+                </md-grid-tile>
+                <md-grid-tile colspan="5" rowspan="3">
+                    <md-input-container>
+                        <textarea class="json request" disabled mdInput cols="60" placeholder="Response">{{responseBody}}</textarea>
+                    </md-input-container>
+
+                </md-grid-tile>
+            </md-grid-list>
+        </md-card-content>
+    </md-card>
+
+
 </div>

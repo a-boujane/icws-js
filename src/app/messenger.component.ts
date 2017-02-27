@@ -11,28 +11,44 @@ import { Session } from './class/session';
 export class Messenger {
     @Input()
     session: Session;
-    customUrl: string = "";
-    customBody = `
-    {
-        "item1": "value1",
-        "item2": "value2"
-    }`;
-    customMethod: string = "";
-    customResponseBody;
-    customRespomseBodyString = JSON.stringify(this.customResponseBody, undefined, 4);
-    customResponseHeaders = "";
+    url: string = "";
+    methods=["GET","POST","PUT","DELETE"];
+    selectedMethod=this.methods[0];
+    headers="";
+    body = "Only GET requests supported for now";
+    responseCode:number;
+    responseHeaders;
+    responseBody:string;
+    
 
     constructor(private messengerService:MessengerService) { }
 
-    sendCustomRequest() {
-        console.log("Called Custom Request");
-        console.log(this.session);
-        console.log(this.customResponseBody);
+    onSelect(method){
+        this.selectedMethod=method;
+    }
+
+    sendRequest() {
         this.messengerService
-            .customRequest(this.session, this.customMethod, this.session.sampleUrl, this.customBody)
+            .customRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.headers, this.body)
             .subscribe(
-            resp => this.customRespomseBodyString = JSON.stringify(resp.json(), undefined, 4),
-            resp => this.customRespomseBodyString = JSON.stringify(resp.json(), undefined, 4)
+            resp=>{
+                this.responseCode=resp.status;
+                this.responseHeaders= JSON.stringify(resp.headers.toJSON(), undefined, 4);
+                this.responseBody = JSON.stringify(resp.json(), undefined, 4);
+                return;
+            },
+            resp=>{
+                this.responseCode=resp.status;
+                this.responseHeaders= JSON.stringify(resp.headers.toJSON(), undefined, 4);
+                this.responseBody = JSON.stringify(resp.json(), undefined, 4);
+                return;
+            }
             );
+    }
+
+    setResponse(resp){
+        this.responseCode=resp.status;
+        this.responseHeaders=resp.headers;
+        this.responseBody = JSON.stringify(resp.json(), undefined, 4)
     }
 }

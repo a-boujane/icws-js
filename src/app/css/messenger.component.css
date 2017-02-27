@@ -1,9 +1,37 @@
-.fatButton {
-    height: 60px;
-    width: 120px;
-    font-size: 24px;
-    }
 
 textarea {
     resize: none;
+    height: 300px;
+}
+.raleway{
+    font-family: 'Raleway', sans-serif;
+}
+
+textarea.tiny{
+    height:165px;
+}
+textarea.request{
+    height:250px;
+}
+
+.messenger-card{
+    width: 90%;
+    left: 50%;
+    -ms-transform: translate(-50%);
+    transform: translate(-50%);
+    height: auto;
+}
+.root{
+    height: 100%;
+}
+
+.pad{
+    margin-top: 13px;
+    margin-bottom: 25px;
+}
+.minyPad{
+    margin-left: 6px;
+}
+.json{
+    font-family: 'Inconsolata', monospace;
 }

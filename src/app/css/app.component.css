@@ -1,5 +1,15 @@
 .brand{
     font-family: 'Great Vibes', cursive;
     font-size: 35px;
+    margin-top: 10px;
     color: rgb(87.4%, 5.7%, 5.7%);
+}
+.ipad{
+    margin:20px;
+}
+
+.github{
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
 }
