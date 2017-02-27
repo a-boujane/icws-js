@@ -1,4 +1,4 @@
 export class User {
-    username: string="abeb_admin";
-    password:string="1234";
+    username: string="";
+    password:string="";
 }

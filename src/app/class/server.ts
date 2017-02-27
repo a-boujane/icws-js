@@ -1,3 +1,3 @@
 export class Server{
-    serverName:string="boujane01";
+    serverName:string="";
 }
