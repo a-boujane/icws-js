@@ -15,11 +15,11 @@ export class Messenger {
     methods=["GET","POST","PUT","DELETE"];
     selectedMethod=this.methods[0];
     headers="";
-    body = "Only GET requests supported for now";
+    body = "";
     responseCode:number;
     responseHeaders;
     responseBody:string;
-    
+
 
     constructor(private messengerService:MessengerService) { }
 
