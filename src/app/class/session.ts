@@ -25,7 +25,7 @@ export class Session {
     }
     setBaseUrl(server): string {
         this.server=server;
-        this.baseUrl = "http://" + server.serverName + ":8018/icws";
+        this.baseUrl = "https://" + server.serverName + ":8019/icws";
         return this.baseUrl;
     }
 
