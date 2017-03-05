@@ -5,7 +5,7 @@ the headers and body and them re-insert them in the json"""
 import json
 # import requests
 
-FEED = open("./nav-bar.json", 'r')
+FEED = open("./nav_bar.json", 'r')
 DICO = json.load(FEED)
 DICO = DICO[5:]
 FEED.close()
