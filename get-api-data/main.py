@@ -3,9 +3,7 @@ import pprint
 import requests
 from bs4 import BeautifulSoup as BS
 
-EXAMPLEURL = "https://help.inin.com/developer/cic/\
-docs/icws/webhelp/icws/(sessionId)/configuration/\
-recording-beep-tones/index.htm#post"
+EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/icws/(sessionId)/activations/users/(userId)/index.htm#get"
 METHOD = "get"
 
 # FEE = open("./example.html", 'wb')
@@ -15,6 +13,7 @@ METHOD = "get"
 def get_call_data(url, method):
     """this method is what is supposed to be called from outside
     this module to get the headers + body of each api call"""
+    print url
     page = requests.get(url)
     soup = BS(page.text, "html.parser")
     # page = open("example.html", 'r')
@@ -23,17 +22,30 @@ def get_call_data(url, method):
     sections = soup.find("header", attrs={"id": method})\
     .find_next_sibling().section.find_all('section')
     get_headers(sections[0])
+    get_templae(sections[0])
+    get_query_params(sections[0])
     print "----------------------- BODY ---------------------------"
     p_p = pprint.PrettyPrinter(indent=4)
     p_p.pprint(get_body(sections[1]))
 
-def get_headers(header_section):
+def get_headers(parameters_section):
     """get Headers from URL and method"""
-    print "--------------------- HEADERS -------------------------"
-    ximo = header_section.find_all("div", attrs={"class": "row"})
-    for row in ximo[1:]:
-        print row.find("div", attrs={"class": "span2"}).string
+    get_x_param(parameters_section, "Header")
 
+def get_templae(parameters_section):
+    """get template from URL and method"""
+    get_x_param(parameters_section, "Template")
+
+def get_query_params(parameters_section):
+    """Get the query params from the Parameters section"""
+    get_x_param(parameters_section, "Query")
+
+def get_x_param(parameters_section, parameters):
+    """Get the X params from the Parameters section"""
+    print "--------------------- {0} Params -------------------------".format(parameters)
+    ximo = parameters_section.find_all("span", attrs={"data-param-type":parameters})
+    for item in ximo:
+        print item.parent.find_next_sibling().get_text()
 
 def get_body(body_section, level=0):
     """gets the api call body from the html webpage"""
