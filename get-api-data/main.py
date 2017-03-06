@@ -1,9 +1,11 @@
 """getHeaders and body. The body methos is not implemented yet"""
+import pprint
 import requests
 from bs4 import BeautifulSoup as BS
-import pprint
 
-EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/icws/(sessionId)/configuration/recording-beep-tones/index.htm#post"
+EXAMPLEURL = "https://help.inin.com/developer/cic/\
+docs/icws/webhelp/icws/(sessionId)/configuration/\
+recording-beep-tones/index.htm#post"
 METHOD = "get"
 
 # FEE = open("./example.html", 'wb')
@@ -22,8 +24,8 @@ def get_call_data(url, method):
     .find_next_sibling().section.find_all('section')
     get_headers(sections[0])
     print "----------------------- BODY ---------------------------"
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(get_body(sections[1]))
+    p_p = pprint.PrettyPrinter(indent=4)
+    p_p.pprint(get_body(sections[1]))
 
 def get_headers(header_section):
     """get Headers from URL and method"""
@@ -51,13 +53,6 @@ def get_body(body_section, level=0):
         siblingo = complexy.find_next_sibling()
         result[complex_key] = get_body(siblingo, level+1)
     return result
-
-# def get_siblingo(tag):
-#     """Gets us the next Sibling in case the actual next_sibling is not a tag"""
-#     result = tag.next_siblings
-#     while not isinstance(result, Tag):
-#         result = result.next_siblings
-#     return result
 
 get_call_data(EXAMPLEURL, METHOD)
 
