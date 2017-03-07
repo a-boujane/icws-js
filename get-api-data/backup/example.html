@@ -1,0 +1,158 @@
+﻿
+<section>
+
+	<h5 class="">Parameters</h5>
+	<section class="parameter-table ">
+		<div class="row headers">
+			<div class="span1">Type</div>
+			<div class="span2">Name</div>
+			<div class="span4">Comments</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Header"><i class="icon-white"></i> Header</span></div>
+			<div class="span2">ININ-ICWS-CSRF-Token</div>
+			<div class="span4">
+				<p class="badge-indicator"><span class="label label-important"><i class="icon-white icon-asterisk"></i> Required</span></p>
+				The ININ session token necessary for all calls that require a security or user context.
+				<p class="default-value hidden"><span class="label label-info">Default value: </span></p>
+				<p class="options-heading hidden">Options:</p>
+				<p class="~*~!visibility!*!">
+					<ul></ul>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Header"><i class="icon-white"></i> Header</span></div>
+			<div class="span2">Cookie</div>
+			<div class="span4">
+				<p class="badge-indicator"><span class="label label-important"><i class="icon-white icon-asterisk"></i> Required</span></p>
+				The session cookie. With the exception of the connection request, all requests must provide a session cookie.
+				<p class="default-value hidden"><span class="label label-info">Default value: </span></p>
+				<p class="options-heading hidden">Options:</p>
+				<p class="~*~!visibility!*!">
+					<ul></ul>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Template"><i class="icon-white"></i> Template</span></div>
+			<div class="span2">sessionId</div>
+			<div class="span4">
+				<p class="badge-indicator"><span class="label label-important"><i class="icon-white icon-asterisk"></i> Required</span></p>
+				The ININ session ID necessary for all calls that require a security or user context.
+				<p class="default-value hidden"><span class="label label-info">Default value: </span></p>
+				<p class="options-heading hidden">Options:</p>
+				<p class="~*~!visibility!*!">
+					<ul></ul>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Header"><i class="icon-white"></i> Header</span></div>
+			<div class="span2">Range</div>
+			<div class="span4">
+
+				<p class="topicPara">Specifies the range of results to be returned.</p>
+				<p class="topicPara">Example: <code>Range: items=10-20.</code></p>
+				<p class="default-value hidden"><span class="label label-info">Default value: </span></p>
+				<p class="options-heading hidden">Options:</p>
+				<p class="~*~!visibility!*!">
+					<ul></ul>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Query"><i class="icon-white"></i> Query</span></div>
+			<div class="span2">select</div>
+			<div class="span4">
+
+				<p class="topicPara">A comma-delimited list of fields to include in the query. If no fields are specified, then only the ID of the items
+					is returned.</p>
+				<p class="topicPara">Example: <code>select=extension,defaultWorkstation</code></p>
+				<p class="topicPara">One can also specify that all of the properties should be returned by using the '*' wildcard value. This is a shortcut
+					for specifying all of the properties' names in the parameter.</p>
+				<p class="topicPara">The selected properties with a NULL value will not be returned to conserve the Interaction Center server's resources.</p>
+				<p class="default-value hidden"><span class="label label-info">Default value: </span></p>
+				<p class="options-heading hidden">Options:</p>
+				<p class="~*~!visibility!*!">
+					<ul></ul>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Query"><i class="icon-white"></i> Query</span></div>
+			<div class="span2">where</div>
+			<div class="span4">
+
+				<p class="topicPara">A comma-delimited list of conditions to filter the results of the query. Only items that satisfy all conditions
+					will be returned.</p>
+				<p class="topicPara">The following operators can be used:</p>
+				<ul>
+					<li id="" class="topicListItem"><code>eq</code> - equals</li>
+					<li id="" class="topicListItem"><code>sw</code> - starts with</li>
+					<li id="" class="topicListItem"><code>ct</code> - contains</li>
+				</ul>
+				<p class="topicPara">Example: <code>where=configurationId.id sw Value</code></p>
+				<p class="topicPara">It is supported for the following properties:</p>
+				<ul>
+					<li id="" class="topicListItem"><code>configurationId.displayName</code></li>
+					<li id="" class="topicListItem"><code>configurationId.id</code></li>
+					<li id="" class="topicListItem"><code>notes</code></li>
+					<li id="" class="topicListItem"><code>toneAmplitudeOne</code></li>
+					<li id="" class="topicListItem"><code>toneAmplitudeTwo</code></li>
+					<li id="" class="topicListItem"><code>toneDuration</code></li>
+					<li class="topicListItem showMore"><span class="caret-wrapper"><b class="caret"></b></span>Show More</li>
+					<li id="" class="topicListItem extra hidden"><code>toneFrequencyOne</code></li>
+					<li id="" class="topicListItem extra hidden"><code>toneFrequencyTwo</code></li>
+					<li id="" class="topicListItem extra hidden"><code>toneInterval</code></li>
+					<li class="topicListItem showLess hidden"><span class="caret-wrapper"><b class="caret"></b></span>Show Less</li>
+				</ul>
+				<p class="default-value hidden"><span class="label label-info">Default value: </span></p>
+				<p class="options-heading hidden">Options:</p>
+				<p class="~*~!visibility!*!">
+					<ul></ul>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Query"><i class="icon-white"></i> Query</span></div>
+			<div class="span2">orderBy</div>
+			<div class="span4">
+
+				<p class="topicPara">The name of the field to sort the results by and an optional sort direction. The default is to sort by <code>configurationId.displayName</code>											in ascending order. A query can only be sorted by one field and only supports one (optional) direction indicator:
+					<code>asc</code> (ascending) or <code>desc</code> (descending).</p>
+				<p class="topicPara">To sort in descending order use: <code>orderBy=configurationId.id desc</code></p>
+				<p class="topicPara">To sort in ascending order use: <code>orderBy=configurationId.id</code> (or <code>orderBy=configurationId.id asc</code>)</p>
+				<p
+					class="topicPara">It is supported for the following properties:</p>
+					<ul>
+						<li id="" class="topicListItem"><code>configurationId.displayName</code></li>
+						<li id="" class="topicListItem"><code>configurationId.id</code></li>
+					</ul>
+					<p class="default-value "><span class="label label-info">Default value: configurationId.displayName</span></p>
+					<p class="options-heading hidden">Options:</p>
+					<p class="~*~!visibility!*!">
+						<ul></ul>
+					</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span1"><span class="label param-type" data-param-type="Query"><i class="icon-white"></i> Query</span></div>
+			<div class="span2">rightsFilter</div>
+			<div class="span4">
+
+				The security right to use when filtering the results.
+				<p class="default-value "><span class="label label-info">Default value: admin</span></p>
+				<p class="options-heading ">Options:</p>
+				<p class="~*~!visibility!*!">
+					<ul>
+						<li><span class="option-value">view</span> </li>
+						<li><span class="option-value">admin</span> </li>
+					</ul>
+				</p>
+			</div>
+		</div>
+	</section>
+
+	
+</section>
