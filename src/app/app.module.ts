@@ -1,14 +1,14 @@
-import { ConnectionComponent } from './connection.component';
-import { ConnectionService } from './connection.service';
-import {MessengerService} from './messenger.service';
+import { ConnectionService } from './services/connection.service';
+import {MessengerService} from './services/messenger.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {MaterialModule} from '@angular/material';
 
-import { AppComponent } from './app.component';
-import {Messenger} from './messenger.component';
+import { ConnectionComponent } from './components/connection.component';
+import { AppComponent } from './components/app.component';
+import {Messenger} from './components/messenger.component';
 
 
 @NgModule({

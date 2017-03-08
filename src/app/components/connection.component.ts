@@ -1,16 +1,16 @@
-import { Session } from './class/session';
+import { Session } from '../class/session';
 import { Component, Input } from '@angular/core';
 
 
-import { ConnectionService } from './connection.service';
-import { User } from './class/user';
-import { Server } from './class/server';
+import { ConnectionService } from '../services/connection.service';
+import { User } from '../class/user';
+import { Server } from '../class/server';
 
 @Component({
     moduleId: module.id,
     selector: 'connection',
-    templateUrl: './html/connection.component.html',
-    styleUrls: ['./css/connection.component.css']
+    templateUrl: '../html/connection.component.html',
+    styleUrls: ['../css/connection.component.css']
 })
 export class ConnectionComponent {
     user: User = new User();

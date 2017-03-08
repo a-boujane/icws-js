@@ -1,12 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {MessengerService} from './messenger.service';
-import { Session } from './class/session';
+import {MessengerService} from '../services/messenger.service';
+import { Session } from '../class/session';
 
 @Component({
     moduleId: module.id,
     selector: 'messenger',
-    templateUrl: './html/messenger.component.html',
-    styleUrls: ['./css/messenger.component.css']
+    templateUrl: '../html/messenger.component.html',
+    styleUrls: ['../css/messenger.component.css']
 })
 export class Messenger {
     @Input()
