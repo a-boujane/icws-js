@@ -45,6 +45,6 @@ def print_da_sh(dic_arr, level=0):
 
 
 
-with open("ultimate.json", 'w') as file:
+with open("ultimate.min.json", 'w') as file:
     file.write(json.dumps(print_da_sh(DICO)))
 

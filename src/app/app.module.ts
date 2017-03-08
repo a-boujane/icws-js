@@ -8,6 +8,7 @@ import { ConnectionComponent } from './components/connection.component';
 import { AppComponent } from './components/app.component';
 import { Messenger } from './components/messenger.component';
 import { NavigatorComponent } from './components/navigator.component'
+import { TreeView } from './components/tree-view.component'
 
 import { ConnectionService } from './services/connection.service';
 import { MessengerService } from './services/messenger.service';
@@ -18,7 +19,8 @@ import { NavigatorService } from './services/navigator.service'
     AppComponent,
     ConnectionComponent,
     Messenger,
-    NavigatorComponent
+    NavigatorComponent,
+    TreeView
   ],
   imports: [
     BrowserModule,

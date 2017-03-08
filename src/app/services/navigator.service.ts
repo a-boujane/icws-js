@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class NavigatorService {
 
-    url="ultimate.json";
+    url="./ultimate.min.json";
     constructor(private http:Http) { }
     
     fetchElements():Observable<Response>{
