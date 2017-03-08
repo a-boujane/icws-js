@@ -1,12 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import {NavigatorService} from '../services/navigator.service'
 
 @Component({
     moduleId: module.id,
     selector: 'navigator',
-    templateUrl: '../html/navigator.component.html'
+    templateUrl: '../html/navigator.component.html',
+    styleUrls:['../css/navigator.component.css']
 })
-export class Navigator implements OnInit {
-    constructor() { }
+export class NavigatorComponent implements OnInit {
+    
+    tree={};
+    selectedItem={}
+    
+    constructor(private navigator:NavigatorService) { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.navigator.fetchElements()
+        .subscribe(resp=>{
+            this.tree=resp.json();
+        });
+    }
 }

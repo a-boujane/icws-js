@@ -1,0 +1,8 @@
+.side-nav{
+    width: 13%;
+    max-width: 15%;
+    max-height: 100%;
+    float:left;
+    margin-right: 15px;
+    background-color: burlywood;
+}
