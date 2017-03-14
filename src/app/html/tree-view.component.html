@@ -1,5 +1,8 @@
-
-  <li *ngFor = "let node of tree">
-    <div>{{node.title}}</div>
-    <tree-view [tree]="node.children"></tree-view>
+  <li *ngFor="let node of tree">
+    <div>
+      <span (click)="setSelectedNode(node)"> {{node.title}} </span>
+      </div>
+    <div *ngIf= "selectedNode === node">
+      <tree-view  [tree]="node.children" ></tree-view>
+    </div>
   </li>
