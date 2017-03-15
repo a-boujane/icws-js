@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Req } from '../class/req'
+import { Req } from '../class/req';
+import {RequestService} from '../services/request.service';
+
 @Component({
     moduleId: module.id,
     selector: 'tree-view',
@@ -10,8 +12,12 @@ export class TreeView  {
     private tree:TreeView
     @Input()
     selectedNode;
+    constructor(private requestService:RequestService){
 
+    }
     setSelectedNode(node){
+        if(node.data)
+            this.requestService.selectRequest(node.data);
         if(node!==this.selectedNode){
             this.selectedNode=node;
         }

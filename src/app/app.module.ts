@@ -12,7 +12,8 @@ import { TreeView } from './components/tree-view.component'
 
 import { ConnectionService } from './services/connection.service';
 import { MessengerService } from './services/messenger.service';
-import { NavigatorService } from './services/navigator.service'
+import { NavigatorService } from './services/navigator.service';
+import { RequestService } from './services/request.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { NavigatorService } from './services/navigator.service'
     HttpModule,
     MaterialModule.forRoot(),
   ],
-  providers: [ConnectionService,MessengerService,NavigatorService],
+  providers: [ConnectionService,MessengerService,NavigatorService,RequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
