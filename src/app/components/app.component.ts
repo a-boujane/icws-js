@@ -11,7 +11,7 @@ export class AppComponent {
   request:Object;
   
   constructor(private requestService:RequestService){
-    requestService.requestSelected.subscribe((req=>{this.request=req; console.log(this.request);}));
+    requestService.requestSelected.subscribe((req=>{this.request=req;}));
   }
   loggedOn:boolean=false;
   session:Session=new Session();;

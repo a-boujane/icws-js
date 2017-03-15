@@ -18,11 +18,14 @@ export class TreeView  {
     }
     setSelectedNode(node){
         if(node.data)
-            this.requestService.selectRequest(node.data);
-        if(node!==this.selectedNode){
-            this.selectedNode=node;
+            this.requestService.selectRequest(node);
+        
+        else {
+            if(node!==this.selectedNode){
+                this.selectedNode=node;
+            }
+            else
+                this.selectedNode=null;
         }
-        else
-            this.selectedNode=null;
     }
 }

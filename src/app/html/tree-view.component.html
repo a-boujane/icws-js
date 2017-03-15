@@ -1,7 +1,9 @@
 <div *ngFor="let node of tree">
-  <md-list-item class = "yo-{{node.depth}} densy" (click)="setSelectedNode(node)">
+  <md-list-item class = "yo-{{node.depth}}" (click)="setSelectedNode(node)">
+    <md-icon *ngIf="selectedNode === node" md-list-avatar>arrow_drop_up</md-icon>
+    <md-icon *ngIf="selectedNode !== node" md-list-avatar>arrow_drop_down</md-icon>
     <div>
-      <span> {{node.title}} </span>
+      <span class="raleway"> {{node.title}} </span>
     </div>
   </md-list-item>
   <div *ngIf="selectedNode === node">

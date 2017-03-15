@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {MessengerService} from '../services/messenger.service';
 import { Session } from '../class/session';
 import {Req} from '../class/req';
@@ -9,11 +9,11 @@ import {Req} from '../class/req';
     templateUrl: '../html/messenger.component.html',
     styleUrls: ['../css/messenger.component.css']
 })
-export class Messenger {
+export class Messenger implements OnChanges{
     @Input()
     session: Session;
     @Input()
-    request:Req;
+    requestTemplate:Req;
     url: string = "";
     methods=["GET","POST","PUT","DELETE"];
     selectedMethod=this.methods[0];
@@ -25,13 +25,23 @@ export class Messenger {
 
     constructor(private messengerService:MessengerService) { }
 
+    ngOnChanges(changes: SimpleChanges){
+        this.updateStuff(changes["requestTemplate"].currentValue)
+    }
+
+    private updateStuff(requesty){
+        if(requesty){
+            this.body=JSON.stringify(requesty.data.body,undefined,4);
+        }
+    }
+
     onSelect(method){
         this.selectedMethod=method;
     }
 
     sendRequest() {
         this.messengerService
-            .generalRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.request.headers, this.request.body)
+            .generalRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.headers, this.body)
             .subscribe(
             resp=>{
                 this.responseCode=resp.status;
