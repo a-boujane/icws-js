@@ -1,35 +1,33 @@
-<md-sidenav *ngIf="session.loggedOn">
-  <div class="root">
-    <md-grid-list cols=11 rowHeight="500px">
-      <md-grid-tile colspan="0">
-      </md-grid-tile>
-      <md-grid-tile colspan="11">
-        <md-card class="login-card">
-          <md-card-header class="padded">
-            <md-card-title class="login-card-header">
-              <span class="login-card-header">Login Page</span>
-            </md-card-title>
-            <md-card-subtitle>Please enter your Server Name, User Name and Password</md-card-subtitle>
-          </md-card-header>
+<div class="root" *ngIf="!session.loggedOn">
+  <md-grid-list cols=11 rowHeight="500px">
+    <md-grid-tile colspan="0">
+    </md-grid-tile>
+    <md-grid-tile colspan="11">
+      <md-card class="login-card">
+        <md-card-header class="padded">
+          <md-card-title class="login-card-header">
+            <span class="login-card-header">Login Page</span>
+          </md-card-title>
+          <md-card-subtitle>Please enter your Server Name, User Name and Password</md-card-subtitle>
+        </md-card-header>
+        <br>
+        <md-card-content>
+          <md-input-container>
+            <input autocomplete="on" size="60" class="raleway" autofocus mdInput [(ngModel)]="server.serverName" placeholder="Server Name">
+          </md-input-container>
+          <br><br>
+          <md-input-container>
+            <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.username" placeholder="User Name">
+          </md-input-container>
+          <md-input-container>
+            <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.password" type="password" placeholder="Password">
+          </md-input-container>
           <br>
-          <md-card-content>
-            <md-input-container>
-              <input autocomplete="on" size="60" class="raleway" autofocus mdInput [(ngModel)]="server.serverName" placeholder="Server Name">
-            </md-input-container>
-            <br><br>
-            <md-input-container>
-              <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.username" placeholder="User Name">
-            </md-input-container>
-            <md-input-container>
-              <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.password" type="password" placeholder="Password">
-            </md-input-container>
-            <br>
-          </md-card-content>
-          <md-card-actions>
-            <button class="centrino"  color="primary" md-button (click)="login()">LOGIN</button>
-          </md-card-actions>
-        </md-card>
-      </md-grid-tile>
-    </md-grid-list>
-  </div>
-</md-sidenav>
+        </md-card-content>
+        <md-card-actions>
+          <button class="centrino"  color="primary" md-button (click)="login()">LOGIN</button>
+        </md-card-actions>
+      </md-card>
+    </md-grid-tile>
+  </md-grid-list>
+</div>

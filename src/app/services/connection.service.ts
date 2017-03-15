@@ -14,7 +14,7 @@ export class ConnectionService {
         let body = session.getLoginBody(user);
         let options = session.getOptions();
         return this.http
-            .post(url + "/connection", body, options)
+            .post(url + "icws/connection", body, options)
             .map(resp => resp.json());
     }
 

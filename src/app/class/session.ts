@@ -21,11 +21,11 @@ export class Session {
     }
 
     getMessagingUrl(): string {
-        return this.baseUrl + "/" + this.sessionId + "/messaging/messages";
+        return this.baseUrl + "icws/" + this.sessionId + "/messaging/messages";
     }
     setBaseUrl(server): string {
         this.server=server;
-        this.baseUrl = "https://" + server.serverName + ":8019/icws";
+        this.baseUrl = "http://" + server.serverName + ":8018/";
         return this.baseUrl;
     }
 
@@ -46,13 +46,12 @@ export class Session {
         console.log(this.options);
         this.sessionId = newHeaders.sessionId.toString();
         this.csrfToken = newHeaders.csrfToken.toString();
-        this.headers.append("sessionId", this.sessionId);
         this.headers.append("ININ-ICWS-CSRF-Token", this.csrfToken);
         this.options = new RequestOptions({ headers: this.headers, withCredentials: true }, );
         this.loggedOn = true;
         console.log("created new session id: "+this.sessionId);
         console.log(this.options);
-        this.sampleUrl=this.baseUrl + "/" + this.sessionId + "/activations/users/"+this.user.username;
+        this.sampleUrl=this.baseUrl + "icws/" + this.sessionId + "/activations/users/"+this.user.username;
 
     }
 

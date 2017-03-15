@@ -32,6 +32,18 @@ export class Messenger implements OnChanges{
     private updateStuff(requesty){
         if(requesty){
             this.body=JSON.stringify(requesty.data.body,undefined,4);
+            this.selectedMethod=requesty.title;
+            this.url=this.session.baseUrl+
+                requesty.url.
+                split("/index.htm#")[0].
+                replace('(sessionId)',this.session.sessionId);
+            this.headers="";
+            requesty.data.headers.map(key=>{
+                if(key!=="Cookie" && key!=="ININ-ICWS-CSRF-Token"){
+                    this.headers+=key;
+                    this.headers+=": placeholder,";
+                }
+            });
         }
     }
 
@@ -41,7 +53,7 @@ export class Messenger implements OnChanges{
 
     sendRequest() {
         this.messengerService
-            .generalRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.headers, this.body)
+            .generalRequest(this.session, this.selectedMethod, this.url,this.headers, this.body)
             .subscribe(
             resp=>{
                 this.responseCode=resp.status;

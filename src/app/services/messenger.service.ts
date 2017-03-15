@@ -9,9 +9,9 @@ export class MessengerService {
     generalRequest(session:Session, method:string, url:string, extraHeaders:string,body:string) {
         method=method.toLowerCase();
         let headers=new Headers(session.headers);
-        let tempHeaders=extraHeaders.split(",");
+        let tempHeaders=extraHeaders.replace(/\n+/g, '').split(",");
         tempHeaders.map(header=>{
-            let intermediate=header.split(":");
+            let intermediate=header.trim().split(":");
             if(intermediate.length>1)
                 headers.append(intermediate[0],intermediate[1]);
             return;

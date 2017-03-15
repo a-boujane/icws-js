@@ -1,4 +1,4 @@
-<div *ngIf="!session.loggedOn">
+<div *ngIf="session.loggedOn">
     <md-card class="messenger-card">
         <md-card-content>
             <md-chip-list>
@@ -7,7 +7,7 @@
                     {{method}}</md-chip>
             </md-chip-list>
             <md-input-container class="pad">
-                <input mdInput [(ngModel)]="session.sampleUrl" url class="raleway" placeholder="Request URL" size="100">
+                <input mdInput [(ngModel)]="url" url class="raleway" placeholder="Request URL" size="100">
             </md-input-container>
             <md-grid-list cols=11 rowHeight="100px">
                 <md-grid-tile colspan="5" rowspan="2">
