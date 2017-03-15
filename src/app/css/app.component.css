@@ -13,3 +13,7 @@
     font-weight: bold;
     font-size: 24px;
 }
+
+md-sidenav {
+  width: 20%;
+}

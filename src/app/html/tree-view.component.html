@@ -1,8 +1,10 @@
-  <li *ngFor="let node of tree">
+<div *ngFor="let node of tree">
+  <md-list-item class = "yo-{{node.depth}} densy" (click)="setSelectedNode(node)">
     <div>
-      <span (click)="setSelectedNode(node)"> {{node.title}} </span>
-      </div>
-    <div *ngIf= "selectedNode === node">
-      <tree-view  [tree]="node.children" ></tree-view>
+      <span> {{node.title}} </span>
     </div>
-  </li>
+  </md-list-item>
+  <div *ngIf="selectedNode === node">
+    <tree-view [tree]="node.children"></tree-view>
+  </div>
+</div>

@@ -5,7 +5,8 @@ import {RequestService} from '../services/request.service';
 @Component({
     moduleId: module.id,
     selector: 'tree-view',
-    templateUrl: '../html/tree-view.component.html'
+    templateUrl: '../html/tree-view.component.html',
+    styleUrls:['../css/tree-view.component.css']
 })
 export class TreeView  {
     @Input()

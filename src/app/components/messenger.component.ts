@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {MessengerService} from '../services/messenger.service';
 import { Session } from '../class/session';
+import {Req} from '../class/req';
 
 @Component({
     moduleId: module.id,
@@ -11,6 +12,8 @@ import { Session } from '../class/session';
 export class Messenger {
     @Input()
     session: Session;
+    @Input()
+    request:Req;
     url: string = "";
     methods=["GET","POST","PUT","DELETE"];
     selectedMethod=this.methods[0];
@@ -20,7 +23,6 @@ export class Messenger {
     responseHeaders;
     responseBody:string;
 
-
     constructor(private messengerService:MessengerService) { }
 
     onSelect(method){
@@ -29,7 +31,7 @@ export class Messenger {
 
     sendRequest() {
         this.messengerService
-            .generalRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.headers, this.body)
+            .generalRequest(this.session, this.selectedMethod, this.session.sampleUrl,this.request.headers, this.request.body)
             .subscribe(
             resp=>{
                 this.responseCode=resp.status;

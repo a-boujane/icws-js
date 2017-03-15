@@ -4,7 +4,9 @@
 @import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import './app/css/extra.css';
 
-
+.navbar {
+  margin-bottom: 0px;
+}
 /*html, body, {
     position:fixed;
     top:0;

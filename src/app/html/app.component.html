@@ -14,9 +14,11 @@
   </div>
 
 </nav>
-<navigator></navigator>
 <connection [session]="session"></connection>
+<md-sidenav-container>
+    <md-sidenav #sidenav mode="side" opened="true">
+      <navigator></navigator>
+    </md-sidenav>
+
 <messenger [session]="session"></messenger>
-<div>
-  {{request}}
-</div>
+</md-sidenav-container>
