@@ -17,7 +17,6 @@ export class MessengerService {
             return;
         });
         let options=new RequestOptions({ method:method,headers: headers,body:body, url:url,withCredentials: true }, );
-        debugger;
         return this.call(url,options)
     }
 
