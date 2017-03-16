@@ -1,5 +1,6 @@
 import { Session } from '../class/session';
 import { Component, Input } from '@angular/core';
+import {Response} from '@angular/http';
 
 
 import { ConnectionService } from '../services/connection.service';
@@ -25,8 +26,15 @@ export class ConnectionComponent {
         let connectionResponse = this.connectionService.login(this.session, this.user, this.server);
         connectionResponse.subscribe(
             resp => this.startMessaging(resp),
-            err => console.log(err)
+            err => this.errorHandler(err)
         );
+    }
+
+    errorHandler(err:Response){
+        if (err.status==503){
+            this.server.serverName=err.json().alternateHostList[0];
+            this.login();
+        }
     }
 
     startMessaging(resp): void {
