@@ -42,4 +42,8 @@ export class ConnectionComponent {
         this.connectionService.startMessaging(this.session, resp, 2);
     }
 
+    onPasswordKey(event){
+        if(event.key==="Enter")
+            this.login();
+    }
 }

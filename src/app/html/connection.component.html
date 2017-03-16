@@ -20,7 +20,7 @@
             <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.username" placeholder="User Name">
           </md-input-container>
           <md-input-container>
-            <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.password" type="password" placeholder="Password">
+            <input autocomplete="on" size="28" class="raleway" mdInput [(ngModel)]="user.password" type="password" placeholder="Password" (keyup)="onPasswordKey($event)">
           </md-input-container>
           <br>
         </md-card-content>
