@@ -14,5 +14,5 @@ export class AppComponent {
     requestService.requestSelected.subscribe((req=>{this.request=req;}));
   }
   loggedOn:boolean=false;
-  session:Session=new Session();;
+  session:Session=new Session();
 }
