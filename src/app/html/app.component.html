@@ -15,7 +15,7 @@
 
 </nav>  
 <connection [session]="session"></connection>
-<div *ngIf="!session.loggedOn">
+<div *ngIf="session.loggedOn">
   <md-sidenav-container>
     <md-sidenav #sidenav mode="side" opened="true">
       <navigator></navigator>
