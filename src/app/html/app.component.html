@@ -8,17 +8,18 @@
     </div>
     <div class="nav navbar-nav navbar-right github">
       <div class="ipad">
-        <span *ngIf="session.loggedOn"  style="margin-right:20px; font-size: 16px">Server: {{session.server.serverName}} - Session ID: {{session.sessionId}}</span>
+        <span *ngIf="session.loggedOn" style="margin-right:20px; font-size: 16px">Server: {{session.server.serverName}} - Session ID: {{session.sessionId}}</span>
         <a href="https://github.com/a-boujane/icws-js"><span>Github</span></a></div>
     </div>
   </div>
 
-</nav>
+</nav>  
 <connection [session]="session"></connection>
-<md-sidenav-container>
+<div *ngIf="!session.loggedOn">
+  <md-sidenav-container>
     <md-sidenav #sidenav mode="side" opened="true">
       <navigator></navigator>
     </md-sidenav>
-
-<messenger [session]="session" [requestTemplate]="request"></messenger>
-</md-sidenav-container>
+    <messenger [session]="session" [requestTemplate]="request"></messenger>
+  </md-sidenav-container>
+</div>
