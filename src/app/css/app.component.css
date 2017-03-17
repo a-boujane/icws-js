@@ -17,3 +17,7 @@
 md-sidenav {
   width: 20%;
 }
+
+md-sidenav-container{
+    height: 100%
+}
