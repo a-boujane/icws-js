@@ -14,6 +14,11 @@ textarea.request{
     height:250px;
 }
 
+md-grid-list{
+    min-height: 500px;
+    height: 70vh;
+}
+
 .messenger-card{
     margin-top: 20px;
     margin-bottom: 20px;
