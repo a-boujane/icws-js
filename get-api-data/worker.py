@@ -1,13 +1,15 @@
 """this allows to retrieve the headers, query params, and body from a given URL """
 import requests
+import json
 from bs4 import BeautifulSoup as BS
 
-# EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/icws/(sessionId)/activations/users/(userId)/index.htm#get"
-# METHOD = "get"
+EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/icws/(sessionId)\
+/configuration/password-policies/index.htm#post"
+METHOD = "post"
 
-# FEE = open("./example.html", 'wb')
-# FEE.write(requests.get(EXAMPLEURL).content)
-# FEE.close()
+FEE = open("./backup/example.html", 'wb')
+FEE.write(requests.get(EXAMPLEURL).content)
+FEE.close()
 
 def get_call_data(url, method):
     """this method is what is supposed to be called from outside
@@ -68,5 +70,6 @@ def get_body(body_section, level=0):
         result[complex_key] = get_body(siblingo, level+1)
     return result
 
-# get_call_data(EXAMPLEURL, METHOD)
+with open("debug.json", 'w') as fifile:
+    fifile.write(json.dumps(get_call_data(EXAMPLEURL, METHOD)))
 
