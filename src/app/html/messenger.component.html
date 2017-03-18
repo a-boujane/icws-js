@@ -4,7 +4,7 @@
             <label class="raleway">Select the HTTP Method :</label>
             <md-chip *ngFor="let method of methods" [selected]="method===selectedMethod" (click)="onSelect(method)" class="minyPad raleway">
                 {{method}}</md-chip>
-            <md-chip color="accent" selected="true" style="float:right" class="raleway">Logout</md-chip>
+            <md-chip color="accent" selected="true" style="float:right" (click)= "logout()" class="raleway">Logout</md-chip>
         </md-chip-list>
         <md-input-container class="pad">
             <input mdInput [(ngModel)]="url" url class="raleway" placeholder="Request URL" size="100">

@@ -70,4 +70,15 @@ export class Messenger implements OnChanges{
             );
     }
 
+    logout(){
+        let method:string="DELETE";
+        let url:string=this.session.baseUrl+"icws/"+this.session.sessionId+"/connection/";
+        this.messengerService
+            .generalRequest(this.session,method,url,"","")
+            .subscribe(
+                resp=>location.reload(true),
+                console.log
+            );
+    }
+
 }
