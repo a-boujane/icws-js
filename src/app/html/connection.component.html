@@ -24,9 +24,10 @@
           </md-input-container>
           <br>
         </md-card-content>
-        <md-card-actions>
+        <md-card-actions *ngIf="!trying">
           <button class="centrino"  color="primary" md-button (click)="login()">LOGIN</button>
         </md-card-actions>
+        <md-progress-bar *ngIf="trying" mode="indeterminate"></md-progress-bar>
       </md-card>
     </md-grid-tile>
   </md-grid-list>

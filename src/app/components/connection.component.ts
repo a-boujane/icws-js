@@ -1,6 +1,7 @@
 import { Session } from '../class/session';
 import { Component, Input } from '@angular/core';
 import {Response} from '@angular/http';
+import {MdSnackBar} from '@angular/material';
 
 
 import { ConnectionService } from '../services/connection.service';
@@ -16,13 +17,15 @@ import { Server } from '../class/server';
 export class ConnectionComponent {
     user: User = new User();
     server: Server = new Server();
+    trying:boolean=false;
     @Input()
     session: Session;
 
 
-    constructor(private connectionService: ConnectionService) { }
+    constructor(private connectionService: ConnectionService, public snackBar: MdSnackBar) { }
 
     login(): void {
+        this.trying=true;
         let connectionResponse = this.connectionService.login(this.session, this.user, this.server);
         connectionResponse.subscribe(
             resp => this.startMessaging(resp),
@@ -31,13 +34,20 @@ export class ConnectionComponent {
     }
 
     errorHandler(err:Response){
+        this.trying=false;
         if (err.status==503){
             this.server.serverName=err.json().alternateHostList[0];
             this.login();
         }
+        else if (err.status==0)
+            this.throwMessage("Unable to reach "+this.server.serverName);
+        else
+            this.throwMessage(err.json().message)
     }
 
     startMessaging(resp): void {
+        this.trying=false;
+        this.throwMessage("You now logged on as "+this.user.username);
         this.session.initializeNewLogin(resp);
         this.connectionService.startMessaging(this.session, resp, 2);
     }
@@ -46,4 +56,8 @@ export class ConnectionComponent {
         if(event.key==="Enter")
             this.login();
     }
+
+    throwMessage(message: string) {
+    this.snackBar.open(message,"Close",{duration: 3000});
+  }
 }
