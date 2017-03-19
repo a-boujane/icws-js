@@ -77,7 +77,7 @@ export class Messenger implements OnChanges{
             .generalRequest(this.session,method,url,"","")
             .subscribe(
                 resp=>location.reload(true),
-                console.log
+                ()=>location.reload(true)
             );
     }
 
