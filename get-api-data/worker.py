@@ -1,15 +1,17 @@
 """this allows to retrieve the headers, query params, and body from a given URL """
 import requests
 import json
+import pprint
 from bs4 import BeautifulSoup as BS
 
-EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/icws/(sessionId)\
-/configuration/password-policies/index.htm#post"
-METHOD = "post"
+EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/\
+icws/(sessionId)/licenses/index.htm#delete"
+METHOD = "delete"
+DATA_SOURCE={}
 
-FEE = open("./backup/example.html", 'wb')
-FEE.write(requests.get(EXAMPLEURL).content)
-FEE.close()
+# FEE = open("./backup/example.html", 'wb')
+# FEE.write(requests.get(EXAMPLEURL).content)
+# FEE.close()
 
 def get_call_data(url, method):
     """this method is what is supposed to be called from outside
@@ -20,16 +22,23 @@ def get_call_data(url, method):
     soup = BS(page.text, "html.parser")
     # page = open("example.html", 'r')
     # soup = BS(page.read(), "html.parser")
-    page.close()
+    data_clone_source(soup)
     sections = soup.find("header", attrs={"id": method})\
     .find_next_sibling().section.find_all('section')
-
     data["headers"] = get_headers(sections[0])
     data["template"] = get_templae(sections[0])
     data["query_params"] = get_query_params(sections[0])
     data["body"] = get_body(sections[1])
-
     return data
+
+def data_clone_source(soup):
+    """Retrieve data contract clone sources"""
+    result = soup.findAll("div", attrs={"class":"complex-type-contents data-contract-clone-source"})
+    for item in result:
+        level = item.find("div").attrs["class"][1][-1:]
+        DATA_SOURCE[item.attrs['data-clone-id']] = get_body(item, int(level))
+    # pprint.pprint(DATA_SOURCE)
+
 
 def get_headers(parameters_section):
     """get Headers from URL and method"""
@@ -67,7 +76,12 @@ def get_body(body_section, level=0):
     for complexy in complex_keys:
         complex_key = complexy.find("span", attrs={"class":"property-content"}).get_text()
         siblingo = complexy.find_next_sibling()
-        result[complex_key] = get_body(siblingo, level+1)
+        if "data-contract-clone-target" in siblingo.attrs["class"]:
+            result[complex_key] = DATA_SOURCE[siblingo.attrs["data-clone-id"]]
+        else:
+            result[complex_key] = get_body(siblingo, level+1)
+
+        # data-contract-clone-target
     return result
 
 with open("debug.json", 'w') as fifile:

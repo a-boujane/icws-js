@@ -40,11 +40,11 @@ def print_da_sh(dic_arr, level=0):
                 print "."
                 print "."
                 print "."
-            utils.progress(len(BASE), 514)
+            utils.progress(len(BASE), 514, dic["url"])
     return dic_arr
 
 
 
-with open("ultimate.min.json", 'w') as file:
-    file.write(json.dumps(print_da_sh(DICO)))
+with open("ultimate.min.json", 'w') as ffile:
+    ffile.write(json.dumps(print_da_sh(DICO)))
 

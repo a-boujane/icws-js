@@ -8487,47 +8487,6 @@
     },
     {
         "depth": 0,
-        "id": "icws-sessionId-messaging-Messaging-htm-application",
-        "type": "application",
-        "title": "Messaging",
-        "url": "icws/(sessionId)/messaging/Messaging.htm#application",
-        "children": [
-            {
-                "depth": 1,
-                "id": "icws-sessionId-messaging-Messaging-htm-icws-sessionId-messaging",
-                "type": "resources",
-                "title": "/icws/{sessionId}/messaging",
-                "url": "icws/(sessionId)/messaging/Messaging.htm#icws-sessionId-messaging",
-                "children": [
-                    {
-                        "depth": 2,
-                        "id": "icws-sessionId-messaging-messages-index-htm-resource",
-                        "type": "resource",
-                        "title": "messages",
-                        "url": "icws/(sessionId)/messaging/messages/index.htm#resource",
-                        "children": [
-                            {
-                                "depth": 3,
-                                "id": "icws-sessionId-messaging-messages-index-htm-get",
-                                "type": "get-method",
-                                "title": "GET",
-                                "url": "icws/(sessionId)/messaging/messages/index.htm#get"
-                            },
-                            {
-                                "depth": 3,
-                                "id": "icws-sessionId-messaging-messages-index-htm-eventSource",
-                                "type": "event-source",
-                                "title": "Event Source",
-                                "url": "icws/(sessionId)/messaging/messages/index.htm#eventSource"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    },
-    {
-        "depth": 0,
         "id": "icws-sessionId-phoneNumbers-phoneNumbers-htm-application",
         "type": "application",
         "title": "Phone Numbers",
