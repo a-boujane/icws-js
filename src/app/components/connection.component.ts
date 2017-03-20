@@ -41,8 +41,10 @@ export class ConnectionComponent {
         }
         else if (err.status==0)
             this.throwMessage("Unable to reach "+this.server.serverName);
+        else if (err.json)
+            this.throwMessage(err.json().message);
         else
-            this.throwMessage(err.json().message)
+            this.throwMessage(err.toString());
     }
 
     startMessaging(resp): void {

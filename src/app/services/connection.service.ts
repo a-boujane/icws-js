@@ -1,5 +1,6 @@
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/timeout'
 
 import { User } from '../class/user';
 import { Server } from '../class/server';
@@ -15,6 +16,7 @@ export class ConnectionService {
         let options = session.getOptions();
         return this.http
             .post(url + "icws/connection", body, options)
+            .timeout(10000)
             .map(resp => resp.json());
     }
 
