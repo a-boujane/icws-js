@@ -47,7 +47,7 @@ export class ConnectionComponent {
 
     startMessaging(resp): void {
         this.trying=false;
-        this.throwMessage("You now logged on as "+this.user.username);
+        this.throwMessage("You are now logged in as "+this.user.username);
         this.session.initializeNewLogin(resp);
         this.connectionService.startMessaging(this.session, resp, 2);
     }
