@@ -6,7 +6,7 @@ import json
 import utils
 import worker
 
-FEED = open("./nav_bar.json", 'r')
+FEED = open("./json/nav_bar.json", 'r')
 DICO = json.load(FEED)
 DICO = DICO[5:]
 FEED.close()
@@ -45,6 +45,6 @@ def print_da_sh(dic_arr, level=0):
 
 
 
-with open("ultimate.min.json", 'w') as ffile:
+with open("./json/ultimate.min.json", 'w') as ffile:
     ffile.write(json.dumps(print_da_sh(DICO)))
 

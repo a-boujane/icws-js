@@ -84,6 +84,6 @@ def get_body(body_section, level=0):
         # data-contract-clone-target
     return result
 
-with open("debug.json", 'w') as fifile:
+with open("./json/debug.json", 'w') as fifile:
     fifile.write(json.dumps(get_call_data(EXAMPLEURL, METHOD)))
 
