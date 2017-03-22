@@ -1,14 +1,22 @@
 <md-card class="messenger-card">
     <md-card-content>
         <md-chip-list>
-            <label class="raleway">Select the HTTP Method :</label>
+            <label class="raleway">HTTP Method :</label>
             <md-chip *ngFor="let method of methods" [selected]="method===selectedMethod" (click)="onSelect(method)" class="minyPad raleway">
                 {{method}}</md-chip>
             <md-chip color="accent" selected="true" style="float:right" (click)= "logout()" class="raleway">Logout</md-chip>
         </md-chip-list>
         <md-input-container class="pad">
-            <input mdInput [(ngModel)]="url" url class="raleway" placeholder="Request URL" size="100">
+            <input #urlElement mdInput [(ngModel)]="url" url class="raleway" (blur)="true" placeholder="Request URL" size="400">
         </md-input-container>
+        <md-chip-list *ngIf="query_params.length>0">
+            <label class="raleway">Query params :</label>
+            <md-chip class="minyPad raleway"
+                *ngFor="let query of query_params" 
+                 (click)="addOrRemoveQuery(query,urlElement)"
+                [selected]= "selected_query_params.indexOf(query)!==-1">
+                {{query}}</md-chip>
+        </md-chip-list>
         <md-grid-list cols=11 rowHeight="fit">
             <md-grid-tile colspan="5" rowspan="2">
                 <md-input-container>

@@ -15,10 +15,12 @@ export class Messenger implements OnChanges{
     @Input()
     requestTemplate:Req;
     url: string = "";
-    methods=["GET","POST","PUT","DELETE"];
-    selectedMethod=this.methods[0];
-    headers="";
-    body = "";
+    methods:string[]=["GET","POST","PUT","DELETE"];
+    selectedMethod:string=this.methods[0];
+    headers:string="";
+    query_params:string[]=[];
+    selected_query_params:string[]=[];
+    body:string = "";
     responseCode:number;
     responseHeaders;
     responseBody:string;
@@ -33,6 +35,8 @@ export class Messenger implements OnChanges{
         if(requesty){
             this.body=JSON.stringify(requesty.data.body,undefined,4);
             this.selectedMethod=requesty.title;
+            this.query_params=requesty.data.query_params;
+            this.selected_query_params=[];
             this.url=this.session.baseUrl+
                 requesty.url.
                 split("/index.htm#")[0].
@@ -41,7 +45,7 @@ export class Messenger implements OnChanges{
             requesty.data.headers.map(key=>{
                 if(key!=="Cookie" && key!=="ININ-ICWS-CSRF-Token"){
                     this.headers+=key;
-                    this.headers+=": placeholder,";
+                    this.headers+=": *placeholder,";
                 }
             });
         }
@@ -49,6 +53,38 @@ export class Messenger implements OnChanges{
 
     onSelect(method){
         this.selectedMethod=method;
+    }
+
+    addOrRemoveQuery(query:string,urlElement){
+        if(this.selected_query_params.indexOf(query)>=0)
+            this.removeQuery(query);
+        else
+            this.addQuery(query);
+        setTimeout((urlElement)=>{
+            urlElement.focus();
+            urlElement[0].setSelectionRange(this.url.length,this.url.length);
+        },200,urlElement);
+    }
+
+    private removeQuery(query:string){
+        let re=RegExp(query+'=[^&]*');
+        this.url=this.url.replace(re,"");
+        this.url=this.url.replace("&&","&");
+        this.url=this.url.replace("?&","?");
+        if(this.url.endsWith("?") || this.url.endsWith("&")){
+            this.url=this.url.slice(0,this.url.length-1);
+        }
+        let index=this.selected_query_params.indexOf(query);
+        this.selected_query_params.splice(index,1);
+    }
+
+    private addQuery(query:string){
+        if(this.selected_query_params.length===0)
+            this.url+="?";
+        else
+            this.url+="&";
+        this.selected_query_params.push(query);
+        this.url+=query+"=";
     }
 
     sendRequest() {
