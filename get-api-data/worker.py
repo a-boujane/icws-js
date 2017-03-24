@@ -5,11 +5,11 @@ import pprint
 from bs4 import BeautifulSoup as BS
 
 EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/\
-icws/(sessionId)/licenses/index.htm#delete"
-METHOD = "delete"
+icws/connection/index.htm#post"
+METHOD = "post"
 DATA_SOURCE={}
 
-# FEE = open("./backup/example.html", 'wb')
+# FEE = open("./debug.html", 'wb')
 # FEE.write(requests.get(EXAMPLEURL).content)
 # FEE.close()
 
