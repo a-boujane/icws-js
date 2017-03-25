@@ -12,6 +12,15 @@ DICO = DICO[5:]
 FEED.close()
 BASEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/"
 BASE = []
+ICONS = {
+    "application":"assignment",
+    "resources":"bookmark",
+    "resource":"local_offer",
+    "get-method":"search",
+    "post-method":"add",
+    "put-method":"create",
+    "delete-method":"clear"
+}
 
 def print_da_sh(dic_arr, level=0):
     """
@@ -21,6 +30,7 @@ def print_da_sh(dic_arr, level=0):
     """
     for dic in dic_arr:
         # print level * "\t" + dic["url"]
+        dic["icon"] = ICONS[dic["type"]]
         if dic.has_key("children"):
             print_da_sh(dic["children"], level + 1)
         else:
@@ -42,7 +52,6 @@ def print_da_sh(dic_arr, level=0):
                 print "."
             utils.progress(len(BASE), 514, dic["url"])
     return dic_arr
-
 
 
 with open("./json/ultimate.min.json", 'w') as ffile:
