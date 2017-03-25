@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup as BS
 EXAMPLEURL = "https://help.inin.com/developer/cic/docs/icws/webhelp/\
 icws/connection/index.htm#post"
 METHOD = "post"
-DATA_SOURCE={}
+DATA_SOURCE = {}
 
 # FEE = open("./debug.html", 'wb')
 # FEE.write(requests.get(EXAMPLEURL).content)
@@ -63,6 +63,7 @@ def get_x_param(parameters_section, parameters):
 def get_body(body_section, level=0):
     """gets the api call body from the html webpage"""
     # FIrst, let's create the dict to be converted to a json later
+    i = 0
     result = {}
     # starting with the simple elements
     simple_keys = body_section\
@@ -75,6 +76,9 @@ def get_body(body_section, level=0):
     .find_all("div", attrs={"class":"row data-contract-level-"+str(level)+" collapsible collapsed"})
     for complexy in complex_keys:
         complex_key = complexy.find("span", attrs={"class":"property-content"}).get_text()
+        if complex_key in result:
+            i += 1
+            complex_key += i*"*"
         siblingo = complexy.find_next_sibling()
         if "data-contract-clone-target" in siblingo.attrs["class"]:
             result[complex_key] = DATA_SOURCE[siblingo.attrs["data-clone-id"]]
