@@ -41,4 +41,4 @@ testem.log
 Thumbs.db
 
 #irrelevantExample
-/get-api-data/example.html
+/get-api-data/json

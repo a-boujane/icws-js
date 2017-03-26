@@ -41,19 +41,14 @@ def print_da_sh(dic_arr, level=0):
             try:
                 dic["data"] = worker.get_call_data(BASEURL+dic["url"], dic["title"])
             except AttributeError:
-                print "."
-                print "."
-                print "."
-                print "."
+                print "\n\n\n\n"
                 print "right here: {0}".format(BASEURL+dic["url"])
-                print "."
-                print "."
-                print "."
-                print "."
             utils.progress(len(BASE), 514, dic["url"])
     return dic_arr
 
 
 with open("./json/ultimate.min.json", 'w') as ffile:
     ffile.write(json.dumps(print_da_sh(DICO)))
+
+print "\n\n\n"
 

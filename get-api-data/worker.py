@@ -70,7 +70,12 @@ def get_body(body_section, level=0):
     .find_all("div", attrs={"class":"row data-contract-level-"+str(level)})
     for item in simple_keys:
         dict_to_be = item.find_all("div", attrs={"class":"span2"})
-        result[dict_to_be[0].get_text()] = dict_to_be[1].get_text()
+        try:
+            req = " ***"+dict_to_be[1].find_next_sibling()\
+            .find("span", attrs={"class":"label label-important"}).get_text()[1:]+"***"
+        except AttributeError:
+            req = " ---Optional---"
+        result[dict_to_be[0].get_text()] = dict_to_be[1].get_text()+req
     # Then, let's get the other Complex elements
     complex_keys = body_section\
     .find_all("div", attrs={"class":"row data-contract-level-"+str(level)+" collapsible collapsed"})
