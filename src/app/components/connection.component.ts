@@ -28,9 +28,15 @@ export class ConnectionComponent {
         this.trying=true;
         let connectionResponse = this.connectionService.login(this.session, this.user, this.server);
         connectionResponse.subscribe(
-            resp => this.startMessaging(resp),
+            resp =>this.loggedInSuccessfully(resp),
             err => this.errorHandler(err)
         );
+    }
+
+    loggedInSuccessfully(resp){
+        this.trying=false;
+        this.throwMessage("You are now logged in as "+this.user.username);
+        this.session.initializeNewLogin(resp);
     }
 
     errorHandler(err:Response){
@@ -47,12 +53,6 @@ export class ConnectionComponent {
             this.throwMessage(err.toString());
     }
 
-    startMessaging(resp): void {
-        this.trying=false;
-        this.throwMessage("You are now logged in as "+this.user.username);
-        this.session.initializeNewLogin(resp);
-        this.connectionService.startMessaging(this.session, resp, 2);
-    }
 
     onPasswordKey(event){
         if(event.key==="Enter")

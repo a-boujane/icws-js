@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit} from '@angular/core';
 import {MessengerService} from '../services/messenger.service';
 import { Session } from '../class/session';
 import {Req} from '../class/req';
@@ -9,7 +9,7 @@ import {Req} from '../class/req';
     templateUrl: '../html/messenger.component.html',
     styleUrls: ['../css/messenger.component.css']
 })
-export class Messenger implements OnChanges{
+export class Messenger implements OnChanges, AfterViewInit{
     @Input()
     session: Session;
     @Input()
@@ -21,6 +21,7 @@ export class Messenger implements OnChanges{
     query_params:string[]=[];
     selected_query_params:string[]=[];
     body:string = "";
+    messaging:string = "";
     responseCode:number;
     responseHeaders;
     responseBody:string;
@@ -29,6 +30,11 @@ export class Messenger implements OnChanges{
 
     ngOnChanges(changes: SimpleChanges){
         this.updateStuff(changes["requestTemplate"].currentValue)
+        this.updateMessaging(changes["messageReceived"].currentValue)
+    }
+    
+    private updateMessaging(message){
+        this.messaging = JSON.stringify(message.data.body,undefined,4);
     }
 
     private updateStuff(requesty){
@@ -88,6 +94,10 @@ export class Messenger implements OnChanges{
     }
 
     sendRequest() {
+        this.responseCode=null;
+        this.responseHeaders=null;
+        this.responseBody=null;
+
         this.messengerService
             .generalRequest(this.session, this.selectedMethod, this.url,this.headers, this.body)
             .subscribe(
@@ -115,6 +125,14 @@ export class Messenger implements OnChanges{
                 resp=>location.reload(true),
                 ()=>location.reload(true)
             );
+    }
+
+    startMessaging(): void {
+        this.messengerService.startMessaging(this.session, 2);
+    }
+
+    ngAfterViewInit(){
+        this.startMessaging();
     }
 
 }

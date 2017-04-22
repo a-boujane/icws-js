@@ -18,19 +18,19 @@
                 {{query}}</md-chip>
         </md-chip-list>
         <md-grid-list cols=11 rowHeight="fit">
-            <md-grid-tile colspan="5" rowspan="2">
+            <md-grid-tile colspan="5" rowspan="1">
                 <md-input-container>
                     <textarea class="json tiny" mdInput cols="60" [(ngModel)]="headers" placeholder="Request Headers"></textarea>
                 </md-input-container>
             </md-grid-tile>
-            <md-grid-tile colspan="1" rowspan="5">
+            <md-grid-tile colspan="1" rowspan="4">
                 <button md-fab color="primary" (click)="sendRequest()">
                     <md-icon style="margin-left:5px">send</md-icon>
                 </button>
             </md-grid-tile>
-            <md-grid-tile colspan="5" rowspan="2">
+            <md-grid-tile colspan="5" rowspan="1">
                 <md-input-container>
-                    <textarea class="json tiny" disabled mdInput cols="60" placeholder="Response">{{responseHeaders}}</textarea>
+                    <textarea class="json tiny" disabled mdInput cols="60" placeholder="Response Headers">{{responseHeaders}}</textarea>
                     <md-hint *ngIf="responseCode" align="end">Response Code : {{responseCode}}</md-hint>
                 </md-input-container>
             </md-grid-tile>
@@ -43,7 +43,11 @@
                 <md-input-container>
                     <textarea class="json request" disabled mdInput cols="60" placeholder="Response">{{responseBody}}</textarea>
                 </md-input-container>
-
+            </md-grid-tile>
+            <md-grid-tile colspan="11" rowspan="1">
+                <md-input-container>
+                    <textarea class="json tiny" disabled mdInput cols="120" [(ngModel)]="messaging" placeholder="Messaging"></textarea>
+                </md-input-container>
             </md-grid-tile>
         </md-grid-list>
     </md-card-content>

@@ -19,20 +19,4 @@ export class ConnectionService {
             .timeout(10000)
             .map(resp => resp.json());
     }
-
-    startMessaging(session,loginData, pollingInterval) {
-        setInterval(this.checkMessaging, 1000 * pollingInterval, this,session);
-    }
-
-    checkMessaging(self,session) {
-        let url = session.getMessagingUrl();
-        let options = session.getOptions();
-        return self.http.get(url, options)
-            .map(resp => resp.json())
-            .subscribe(
-            ()=>{},
-            err => console.log(err.json())
-            );
-    }
-
 }

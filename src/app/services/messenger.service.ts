@@ -25,4 +25,20 @@ export class MessengerService {
         return this.http.request(url,options)
             .map(resp=>resp);
     }
+
+    startMessaging(session, pollingInterval) {
+        setInterval(this.checkMessaging, 1000 * pollingInterval, this,session);
+    }
+
+    checkMessaging(self,session) {
+        let url = session.getMessagingUrl();
+        let options = session.getOptions();
+        return self.http.get(url, options)
+            .map(resp => resp.json())
+            .subscribe(
+            ()=>{},
+            err => console.log(err.json())
+            );
+    }
+
 }
