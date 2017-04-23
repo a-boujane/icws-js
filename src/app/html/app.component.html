@@ -14,12 +14,14 @@
   </div>
 
 </nav>
-<connection [session]="session"></connection>
+<div *ngIf="!session.loggedOn">
+  <connection [session]="session"></connection>
+</div>
 <div *ngIf="session.loggedOn">
   <md-sidenav-container>
     <md-sidenav #sidenav mode="side" opened="true">
       <navigator></navigator>
     </md-sidenav>
-    <messenger [session]="session" [requestTemplate]="request"></messenger>
+    <messenger [session]="session" [requestTemplate]="request" [messageReceived]="pollingMessage"></messenger>
   </md-sidenav-container>
 </div>

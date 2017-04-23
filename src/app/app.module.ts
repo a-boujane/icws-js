@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 
 import { ConnectionComponent } from './components/connection.component';
@@ -16,6 +16,7 @@ import { ConnectionService } from './services/connection.service';
 import { MessengerService } from './services/messenger.service';
 import { NavigatorService } from './services/navigator.service';
 import { RequestService } from './services/request.service';
+import { PollingService } from './services/polling.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { RequestService } from './services/request.service';
     HttpModule,
     MaterialModule.forRoot(),
   ],
-  providers: [ConnectionService,MessengerService,NavigatorService,RequestService],
+  providers: [ConnectionService,MessengerService,NavigatorService,RequestService,PollingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

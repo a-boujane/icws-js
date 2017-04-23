@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, AfterViewInit} from '@angular/core';
 import {MessengerService} from '../services/messenger.service';
+import { PollingService } from '../services/polling.service';
 import { Session } from '../class/session';
 import {Req} from '../class/req';
 
@@ -14,6 +15,8 @@ export class Messenger implements OnChanges, AfterViewInit{
     session: Session;
     @Input()
     requestTemplate:Req;
+    @Input()
+    messageReceived:Object;
     url: string = "";
     methods:string[]=["GET","POST","PUT","DELETE"];
     selectedMethod:string=this.methods[0];
@@ -26,11 +29,11 @@ export class Messenger implements OnChanges, AfterViewInit{
     responseHeaders;
     responseBody:string;
 
-    constructor(private messengerService:MessengerService) { }
+    constructor(private messengerService:MessengerService, private pollingService:PollingService) { }
 
     ngOnChanges(changes: SimpleChanges){
         this.updateStuff(changes["requestTemplate"].currentValue)
-        this.updateMessaging(changes["messageReceived"].currentValue)
+        // this.updateMessaging(changes["messageReceived"].currentValue)
     }
     
     private updateMessaging(message){
@@ -128,7 +131,7 @@ export class Messenger implements OnChanges, AfterViewInit{
     }
 
     startMessaging(): void {
-        this.messengerService.startMessaging(this.session, 2);
+        this.pollingService.startMessaging(this.session, 2);
     }
 
     ngAfterViewInit(){
