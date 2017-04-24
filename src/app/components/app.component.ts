@@ -9,11 +9,9 @@ import {PollingService} from '../services/polling.service';
 })
 export class AppComponent {
   request:Object;
-  pollingMessage:Object;
   
-  constructor(private requestService:RequestService, private pollingService:PollingService){
+  constructor(private requestService:RequestService){
     requestService.requestSelected.subscribe((req=>{this.request=req;}));
-    pollingService.messageReceived.subscribe((message=>{this.pollingMessage}))
   }
   loggedOn:boolean=false;
   session:Session=new Session();

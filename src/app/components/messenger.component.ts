@@ -15,8 +15,7 @@ export class Messenger implements OnChanges, AfterViewInit{
     session: Session;
     @Input()
     requestTemplate:Req;
-    @Input()
-    messageReceived:Object;
+    pollingMessage:Object;
     url: string = "";
     methods:string[]=["GET","POST","PUT","DELETE"];
     selectedMethod:string=this.methods[0];
@@ -24,7 +23,7 @@ export class Messenger implements OnChanges, AfterViewInit{
     query_params:string[]=[];
     selected_query_params:string[]=[];
     body:string = "";
-    messaging:string = "";
+    messaging;
     responseCode:number;
     responseHeaders;
     responseBody:string;
@@ -33,11 +32,11 @@ export class Messenger implements OnChanges, AfterViewInit{
 
     ngOnChanges(changes: SimpleChanges){
         this.updateStuff(changes["requestTemplate"].currentValue)
-        // this.updateMessaging(changes["messageReceived"].currentValue)
     }
     
     private updateMessaging(message){
-        this.messaging = JSON.stringify(message.data.body,undefined,4);
+        this.messaging = JSON.stringify(message[0],undefined,4);
+//Work needs done here -- messaging not reflecting on the UI
     }
 
     private updateStuff(requesty){
@@ -136,6 +135,7 @@ export class Messenger implements OnChanges, AfterViewInit{
 
     ngAfterViewInit(){
         this.startMessaging();
+        this.pollingService.messageReceived.subscribe((this.updateMessaging));
     }
 
 }
