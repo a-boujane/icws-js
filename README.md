@@ -1,7 +1,7 @@
 # Summary
 
 This is a browser based application that allows for testing calls to [the RESTful ICWS api](https://help.inin.com/developer/cic/docs/icws/webhelp/ConceptualContent/Welcome.htm#top).
-It is developped in [Angular 2](https://www.angular.io) 
+It is developped in [Angular](https://www.angular.io) 
 
 
 # Example
