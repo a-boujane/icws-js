@@ -10,7 +10,7 @@ import {RequestService} from '../services/request.service';
 })
 export class TreeView  {
     @Input()
-    private tree:TreeView
+    tree:TreeView
     @Input()
     selectedNode;
     constructor(private requestService:RequestService){
