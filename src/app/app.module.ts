@@ -31,7 +31,7 @@ import { PollingService } from './services/polling.service';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
   ],
   providers: [ConnectionService,MessengerService,NavigatorService,RequestService,PollingService],
   bootstrap: [AppComponent]
